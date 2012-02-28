@@ -1,1 +1,65 @@
-My Musical Metadata!
+ID attribute values
+==========
+In order to allow for duplicate entries for all fields, no unique identifiers were used for representations
+
+
+Class attribute values
+==========
+* album
+    > Applied to an LI tag. A list representation of all the 
+      albums.
+* artist
+    > Applied to an LI tag. A list representation of all the 
+      artists.
+* format
+    > Applied to an LI tag. A list representation of all the 
+      formats.
+* genre
+    > Applied to an LI tag. A list representation of all the 
+      genres.
+* track
+    > Applied to an LI tag. A list representation of all the 
+      track titles.
+* year
+    > Applied to an LI tag. A list representation of all the 
+      album years.
+
+
+Name attribute values
+==========
+* album
+    > Applied to an INPUT[text] element. The name of an album.
+* artist
+    > Applied to an INPUT[text] element. The name of an artist.
+* format
+    > Applied to an INPUT[text] element. The name of an format.
+* genre
+    > Applied to an INPUT[text] element. The name of an genre.
+* q
+    > Applied to an INPUT[text] element. The query for a search.
+* track
+    > Applied to an INPUT[text] element. The name of an track.
+* year
+    > Applied to an INPUT[text] element. The name of an year.
+
+
+Rel attribute values
+==========
+* album
+    > Applied to an A tag. A reference to list representation of 
+      all albums.
+* artist
+    > Applied to an A tag. A reference to list representation of 
+      all artists.
+* format
+    > Applied to an A tag. A reference to list representation of 
+      all formats.
+* genre
+    > Applied to an A tag. A reference to list representation of 
+      all genres.
+* track
+    > Applied to an A tag. A reference to list representation of 
+      all track titles.
+* year
+    > Applied to an A tag. A reference to list representation of 
+      all album years.
