@@ -1,28 +1,34 @@
 ID attribute values
 ==========
-In order to allow for duplicate entries for all fields, no unique identifiers were used for representations
+* albums-list
+    > Applied to a UL tag. The list of all albums in this representatiion.
+* artists-list
+    > Applied to a UL tag. The list of all artists in this representatiion.
+* formats-list
+    > Applied to a UL tag. The list of all formats in this representatiion.
+* genres-list
+    > Applied to a UL tag. The list of all genres in this representatiion.
+* tracks-list
+    > Applied to a UL tag. The list of all track titles in this representatiion.
+* years-list
+    > Applied to a UL tag. The list of all album years in this representatiion.
+
 
 
 Class attribute values
 ==========
 * album
-    > Applied to an LI tag. A list representation of all the 
-      albums.
+    > Applied to an LI tag. A list representation of all the albums.
 * artist
-    > Applied to an LI tag. A list representation of all the 
-      artists.
+    > Applied to an LI tag. A list representation of all the artists.
 * format
-    > Applied to an LI tag. A list representation of all the 
-      formats.
+    > Applied to an LI tag. A list representation of all the formats.
 * genre
-    > Applied to an LI tag. A list representation of all the 
-      genres.
+    > Applied to an LI tag. A list representation of all the genres.
 * track
-    > Applied to an LI tag. A list representation of all the 
-      track titles.
+    > Applied to an LI tag. A list representation of all the track titles.
 * year
-    > Applied to an LI tag. A list representation of all the 
-      album years.
+    > Applied to an LI tag. A list representation of all the album years.
 
 
 Name attribute values
@@ -46,20 +52,14 @@ Name attribute values
 Rel attribute values
 ==========
 * album
-    > Applied to an A tag. A reference to list representation of 
-      all albums.
+    > Applied to an A tag. A reference to list representation of all albums.
 * artist
-    > Applied to an A tag. A reference to list representation of 
-      all artists.
+    > Applied to an A tag. A reference to list representation of all artists.
 * format
-    > Applied to an A tag. A reference to list representation of 
-      all formats.
+    > Applied to an A tag. A reference to list representation of all formats.
 * genre
-    > Applied to an A tag. A reference to list representation of 
-      all genres.
+    > Applied to an A tag. A reference to list representation of all genres.
 * track
-    > Applied to an A tag. A reference to list representation of 
-      all track titles.
+    > Applied to an A tag. A reference to list representation of all track titles.
 * year
-    > Applied to an A tag. A reference to list representation of 
-      all album years.
+    > Applied to an A tag. A reference to list representation of all album years.
