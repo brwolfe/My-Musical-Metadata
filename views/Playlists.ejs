@@ -1,1 +1,26 @@
-<a />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Playlists</title>
+  </head>
+  <body>
+  <h1>All Playlists:</h1>
+
+    <% if (items.length > 0) { %>
+    <ul id="playlists">
+      <% items.forEach(function(item) { %>
+      <li class="SpecificPlaylist">
+        <a href="/Playlists/<%=item._id%>" rel="playlist"><%=item.name%></a>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <div>No playlists have been created.</div>
+    <% } %>
+
+    <form id="NewPlaylist" action="/Playlists/" method="post">
+    Playlist Name: <input type="text" name="Playlist_ID" />
+    <input type="submit" value="Create Me A New Playlist" name="SubmitButton" />
+    </form>
+  </body>
+</html>
