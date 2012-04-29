@@ -1,1 +1,33 @@
-<album />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Album: <%=item.name%></title>
+  </head>
+  
+  <body>
+  
+  <h1><%=item.artist%> -- <%=item.name%></h1>
+
+<!-- how do we loop through the songs on the album here? -->
+
+    <% if (items.length > 0) { %>
+    <ol id="Songs">
+      <% items.forEach(function(item) { %>
+      <li class="Song">
+<!-- what if anything do we link to here? do we want a song template? -->
+        <a rel="Song" href=""><%=item.name%></a>,
+
+<!-- how do we loop through these properties? -->
+        <span class="genre"><%=item.genre%></span>, <span class="genre"><%=item.genre%></span>,
+        <span class="key"><%=item.key%></span>, <span class=key"><%=item.key%></span>,
+        <span class="tempo"><%=item.tempo%></span>, <span class="tempo"><%=item.tempo%></span>.
+
+      </li>
+      <% }); %>
+    </ol>
+    <% } else { %>
+    <div>No songs listed for <%=item.name%>.</div>
+    <% } %>
+
+</body>
+</html>
