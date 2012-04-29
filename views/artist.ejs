@@ -8,15 +8,15 @@
   <body>
   <h1><%=item.name%>'s Albums:</h1>
 
-<!-- how do we establish that this should be a list of albums, not of artists?? -->
-    <% if (items.length > 0) { %>
+<!-- how do we establish that this should be a list of albums, not of artists? -->
+    <% if (related_items.length > 0) { %>
         <ul id="Albums">
-        <% items.forEach(function(item) { %>
+        <% related_items.forEach(function(item) { %>
             <li class="SpecificAlbum">
-                <a rel="Album" href="/albums/<%=item._id%>"><%=item.name%></a>,
+                <a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a>,
 <!-- how to loop through genres? -->
 
-                 <span class="genre"></span>
+                 <span class="genre"><%=related_item.genre%></span>
             </li>
         <% }); %>
         </ul>
