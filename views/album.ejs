@@ -9,7 +9,7 @@
   <h1><%=item.artist%> -- <%=item.name%></h1>
 
 <!-- how do we loop through the songs on the album here? -->
-
+<!-- ...thinking they should be related_items, but then songs need to be an item? -->
     <% if (items.length > 0) { %>
     <ol id="Songs">
       <% items.forEach(function(item) { %>
