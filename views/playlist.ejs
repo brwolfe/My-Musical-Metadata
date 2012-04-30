@@ -29,16 +29,15 @@
         <span class="tempo">Tempo1</span>, <span class="tempo">TempoN</span>.
       </li>
     </ol>
-    
+
+<!-- what does this form do? -->
     <form id="NewTrack" action="../" method="post">
     <input type="submit" value="Add a new track" name="SubmitButton" />
     </form>
-   
     
- 
     <form id="NewTrackValue" action="/{TrackURI}" method="put">
-    Track number in this playlist: <input type="text" name="TrackURI" />
-    Song URI from Album Page: <input type="text" name="SongURI" />
+    Track number in this playlist: <input type="text" name="item[TrackURI]" />
+    Song URI from Album Page: <input type="text" name="item[SongURI]" />
     <input type="submit" value="Update the song in a playlist track" name="SubmitButton" />
     </form>
 
