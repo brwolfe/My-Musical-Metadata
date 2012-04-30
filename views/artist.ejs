@@ -14,8 +14,12 @@
             <li class="SpecificAlbum">
                 <a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a>,
 <!-- how to loop through genres? -->
-
-                 <span class="genre"><%=related_item.genre%></span>
+<!-- here's a stab at it... -->
+                <% for (var key in item) { %>
+                    <% if (key === 'genre') { %>
+                 <span class="genre"><%=related_item[key]%></span>
+                    <% } %>
+                <% } %>
             </li>
         <% }); %>
         </ul>
