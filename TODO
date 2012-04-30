@@ -1,12 +1,15 @@
 - discuss resource types. should songs be a type? tracks? are they the same type or different?
+[for now we are ignoring playlists. song will be a resource type, and list of songs. dbs is working on adding these.]
 
 - add / wrangle forms to add / update each resource type.
+[dbs is working on these.]
 
 - address various issues with the views (see comments within individual docs)
     -All songs (from query)
     -Single song
 
 - add handler functions within app.js
+[apl and sed working on this.]
 
 - add microdata (within all views)
 
