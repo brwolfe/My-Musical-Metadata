@@ -10,17 +10,17 @@
 
 <!-- how do we loop through the songs on the album here? -->
 <!-- ...thinking they should be related_items, but then songs need to be an item? -->
-    <% if (items.length > 0) { %>
+    <% if (related_items.length > 0) { %>
     <ol id="Songs">
-      <% items.forEach(function(item) { %>
+      <% related_items.forEach(function(related_item) { %>
       <li class="Song">
 <!-- what if anything do we link to here? do we want a song template? -->
-        <a rel="Song" href=""><%=item.name%></a>,
+        <a rel="Song" href=""><%=related_item.name%></a>,
 
 <!-- how do we loop through these properties? -->
-        <span class="genre"><%=item.genre%></span>, <span class="genre"><%=item.genre%></span>,
-        <span class="key"><%=item.key%></span>, <span class=key"><%=item.key%></span>,
-        <span class="tempo"><%=item.tempo%></span>, <span class="tempo"><%=item.tempo%></span>.
+        <span class="genre"><%=related_item.genre%></span>, <span class="genre"><%=related_item.genre%></span>,
+        <span class="key"><%=related_item.key%></span>, <span class=key"><%=related_item.key%></span>,
+        <span class="tempo"><%=related_item.tempo%></span>, <span class="tempo"><%=related_item.tempo%></span>.
 
       </li>
       <% }); %>
