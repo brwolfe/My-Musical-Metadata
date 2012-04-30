@@ -317,7 +317,55 @@ app.get('/',       // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// An example of handling GET of the artist resource, which is a list of artists, with dependent type albums. //////////////////////////
+// An example of handling GET of the allsongs resource, which is a list of songs, with dependent type artist. //////////////////////////
+// This handler is also complicated, because we want to show not only the //////
+// item requested, but also a list of potential related items, so that users ///
+// can select from a list when updating the item. //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.get('/songs/',       // TODO: change to suit your URI design.
+  function(req, res) {
+
+    var item_type = 'song'; // TODO: change to the type of item you want.
+
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+  
+    // Get one item of the specified type, identified by the item ID.
+    db.getOne(item_type, item_id, function(err, item) {
+        
+      // If there was a database error, return an error status.
+      if (err) {
+        if (err.error == 'not_found') { res.send(404); }
+        else { res.send(err, 500); }
+      } 
+
+      // Otherwise, get the items potentially related to this item.
+      else {
+        
+        var related_type = 'artist'; // TODO: change to type of related item.
+
+        // Get all items of the specified related type.
+        db.getAll(related_type, function(err, items) {
+
+          // If there was a database error, return an error status.
+          if (err) { res.send(err, 500); } 
+
+          // Otherwise, use the returned data to render an HTML page.
+          else {
+            res.render(
+              'list-songs', // TODO: change to name of your HTML template.
+              { items: items, related_items: items }
+            );
+          }
+        });
+      }
+    });
+  }
+);
+
+
+////////////////////////////////////////////////////////////////////////////////
+// An example of handling GET of the artist resource, which is a list of albums. //////////////////////////
 // This handler is also complicated, because we want to show not only the //////
 // item requested, but also a list of potential related items, so that users ///
 // can select from a list when updating the item. //////////////////////////////
@@ -362,6 +410,8 @@ app.get('/artist/:id',       // TODO: change to suit your URI design.
     });
   }
 );
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // An example of handling GET of the album resource, which a list of dependent songs. //////////////////////////
@@ -409,6 +459,8 @@ app.get('/album/:id',       // TODO: change to suit your URI design.
     });
   }
 );
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // An example of handling GET of the song resource, which a list of containing albums. //////////////////////////
