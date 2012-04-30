@@ -133,13 +133,13 @@ app.put('/candidates/:id', // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// Another example of handling GET of a "collection" resource. /////////////////
+// Another example of handling GET of a "collection" of artists resource. /////////////////
 // This time we support filtering the list by some criteria (i.e. searching). //
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/candidates/',          // TODO: change to suit your URI design. 
+app.get('/artists/',          // TODO: change to suit your URI design. 
   function(req, res) {
 
-    var item_type = 'candidate'; // TODO: change to the type of item you want.
+    var item_type = 'artist'; // TODO: change to the type of item you want.
 
     // Get items of the specified type that match the query.
     db.getSome(item_type, req.query, function(err, items) {
@@ -150,7 +150,33 @@ app.get('/candidates/',          // TODO: change to suit your URI design.
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'list-candidates', // TODO: change to the name of your HTML template.
+          'list-artists', // TODO: change to the name of your HTML template.
+          { items: items }
+        );
+      }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// Another example of handling GET of a "collection" of albums resource. /////////////////
+// This time we support filtering the list by some criteria (i.e. searching). //
+////////////////////////////////////////////////////////////////////////////////
+app.get('/albums/',          // TODO: change to suit your URI design. 
+  function(req, res) {
+
+    var item_type = 'album'; // TODO: change to the type of item you want.
+
+    // Get items of the specified type that match the query.
+    db.getSome(item_type, req.query, function(err, items) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+
+      // Otherwise, use the returned data to render an HTML page.
+      else {
+        res.render(
+          'list-albums', // TODO: change to the name of your HTML template.
           { items: items }
         );
       }
@@ -260,7 +286,7 @@ app.get('/artist/:id',       // TODO: change to suit your URI design.
 // item requested, but also a list of potential related items, so that users ///
 // can select from a list when updating the item. //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/album/:id',       // TODO: change to suit your URI design.
+app.get('/artist/album/:id',       // TODO: change to suit your URI design.
   function(req, res) {
 
     var item_type = 'album'; // TODO: change to the type of item you want.
@@ -292,6 +318,53 @@ app.get('/album/:id',       // TODO: change to suit your URI design.
           else {
             res.render(
               'album', // TODO: change to name of your HTML template.
+              { item: item, related_items: items }
+            );
+          }
+        });
+      }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// An example of handling GET of the song resource, which a list of containing albums. //////////////////////////
+// This handler is also complicated, because we want to show not only the //////
+// item requested, but also a list of potential related items, so that users ///
+// can select from a list when updating the item. //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.get('/artist/album/song/:id',       // TODO: change to suit your URI design.
+  function(req, res) {
+
+    var item_type = 'song'; // TODO: change to the type of item you want.
+
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+  
+    // Get one item of the specified type, identified by the item ID.
+    db.getOne(item_type, item_id, function(err, item) {
+        
+      // If there was a database error, return an error status.
+      if (err) {
+        if (err.error == 'not_found') { res.send(404); }
+        else { res.send(err, 500); }
+      } 
+
+      // Otherwise, get the items potentially related to this item.
+      else {
+        
+        var related_type = 'album'; // TODO: change to type of related item.
+
+        // Get all items of the specified related type.
+        db.getAll(related_type, function(err, items) {
+
+          // If there was a database error, return an error status.
+          if (err) { res.send(err, 500); } 
+
+          // Otherwise, use the returned data to render an HTML page.
+          else {
+            res.render(
+              'song', // TODO: change to name of your HTML template.
               { item: item, related_items: items }
             );
           }
