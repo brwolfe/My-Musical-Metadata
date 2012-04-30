@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <head>
+    <title>BrandCramp: <%=item.name%></title>
+  </head>
+
+  <body>
+    <div itemscope>
+    <h1 itemprop="name"><%=item.name%></h1>
+
+    <p>Artist:
+        <span itemprop="byArtist">
+            <%=item.byArtist%>
+        </span>
+    </p>            
+
+    <p>Date published:
+        <span itemprop="datePublished">
+            <%=item.date%>
+        </span>
+    </p>
+
+    <p>Duration:
+        <span itemprop="duration">
+            <%=item.duration%>
+        </span>
+    </p>           
+
+    <p>Genre:
+        <% var numGenres = item.genres.length; %>
+            <% for (var i=0; i<numGenres; i++) { %>
+                <% if (i < (numGenres - 1)) { %>
+                    <span class="genre" itemprop="genre"><%=item.genres[i]%></span>, 
+                <% } else { %>
+                    <span class="genre" itemprop="genre"><%=item.genres[i]%></span>
+                    <% } %>
+                <% } %>
+    </p>
+
+    <p>Tempo:
+        <% var numTempo = item.tempo.length; %>
+            <% for (var i=0; i<numTempo; i++) { %>
+                <% if (i < (numTempo - 1)) { %>
+                    <span class="tempo" itemprop="tempo"><%=item.tempo[i]%></span>, 
+                <% } else { %>
+                    <span class="tempo" itemprop="tempo"><%=item.tempo[i]%></span>
+                    <% } %>
+                <% } %>
+    </p>
+
+    <p>Key:
+        <% var numKey = item.key.length; %>
+            <% for (var i=0; i<numKey; i++) { %>
+                <% if (i < (numKey - 1)) { %>
+                    <span class="key" itemprop="key"><%=item.key[i]%></span>, 
+                <% } else { %>
+                    <span class="key" itemprop="key"><%=item.key[i]%></span>
+                    <% } %>
+                <% } %>
+    </p>
+
+    <% if (related_items.length > 0) { %>
+        <ul id="Albums">
+        <% related_items.forEach(function(related_item) { %>
+            <li class="SpecificAlbum" itemprop="inAlbum">
+                <a rel="Album" href="artist/albums/<%=related_item._id%>"><%=related_item.name%></a><br />
+            </li>
+        <% }); %>
+        </ul>
+    <% } else { %>
+        <div><%=item.name%> does not appear on any albums.</div>
+    <% } %>
+
+    </ul>
+    </div>
+  </body>
+
+</html>
