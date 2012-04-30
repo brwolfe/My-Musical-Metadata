@@ -30,7 +30,7 @@ var db = utils.connectToDatabase(USER_OR_GROUP_NAME);
 // Example of handling PUT to create or update a resource. /////////////////////
 // Here we create or update an item using the ID specified in the URI. /////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('artists/albums/:id',      // TODO: change to suit your URI design.
+/* app.put('artists/albums/:id',      // TODO: change to suit your URI design.
   function(req, res) {
   
     // Get the item ID from the URI.
@@ -54,7 +54,7 @@ app.put('artists/albums/:id',      // TODO: change to suit your URI design.
   }
 );
 
-
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // Example of handling POST to create an artist. //////////////////////////////
