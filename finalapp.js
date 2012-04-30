@@ -55,8 +55,7 @@ app.put('/parties/:id',      // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// Example of handling GET of a "collection" resource. /////////////////////////
-// Here we list all items of type `party`. /////////////////////////////////////
+// Testing out the root resource logic//////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/parties/',         // TODO: change to suit your URI design. 
   function(req, res) {
@@ -211,15 +210,15 @@ app.get('/parties/:id',      // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// An example of handling GET of a "single" resource. //////////////////////////
+// An example of handling GET of the root resource, which is a list of artists, with dependent type albums. //////////////////////////
 // This handler is also complicated, because we want to show not only the //////
 // item requested, but also a list of potential related items, so that users ///
 // can select from a list when updating the item. //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/candidates/:id',       // TODO: change to suit your URI design.
+app.get('/',       // TODO: change to suit your URI design.
   function(req, res) {
 
-    var item_type = 'candidate'; // TODO: change to the type of item you want.
+    var item_type = 'artist'; // TODO: change to the type of item you want.
 
     // Get the item ID from the URI.
     var item_id = req.params.id;
@@ -236,7 +235,7 @@ app.get('/candidates/:id',       // TODO: change to suit your URI design.
       // Otherwise, get the items potentially related to this item.
       else {
         
-        var related_type = 'party'; // TODO: change to type of related item.
+        var related_type = 'album'; // TODO: change to type of related item.
 
         // Get all items of the specified related type.
         db.getAll(related_type, function(err, items) {
@@ -247,7 +246,7 @@ app.get('/candidates/:id',       // TODO: change to suit your URI design.
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'one-candidate', // TODO: change to name of your HTML template.
+              'index', // TODO: change to name of your HTML template.
               { item: item, related_items: items }
             );
           }
@@ -257,9 +256,54 @@ app.get('/candidates/:id',       // TODO: change to suit your URI design.
   }
 );
 
+////////////////////////////////////////////////////////////////////////////////
+// An example of handling GET of the artist resource, which is a list of artists, with dependent type albums. //////////////////////////
+// This handler is also complicated, because we want to show not only the //////
+// item requested, but also a list of potential related items, so that users ///
+// can select from a list when updating the item. //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.get('/artist/:id',       // TODO: change to suit your URI design.
+  function(req, res) {
 
+    var item_type = 'artist'; // TODO: change to the type of item you want.
+
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+  
+    // Get one item of the specified type, identified by the item ID.
+    db.getOne(item_type, item_id, function(err, item) {
+        
+      // If there was a database error, return an error status.
+      if (err) {
+        if (err.error == 'not_found') { res.send(404); }
+        else { res.send(err, 500); }
+      } 
+
+      // Otherwise, get the items potentially related to this item.
+      else {
+        
+        var related_type = 'album'; // TODO: change to type of related item.
+
+        // Get all items of the specified related type.
+        db.getAll(related_type, function(err, items) {
+
+          // If there was a database error, return an error status.
+          if (err) { res.send(err, 500); } 
+
+          // Otherwise, use the returned data to render an HTML page.
+          else {
+            res.render(
+              'artist', // TODO: change to name of your HTML template.
+              { item: item, related_items: items }
+            );
+          }
+        });
+      }
+    });
+  }
+);
 // Handle GET of the "index" resource.
-app.get('/', function(req, res) { res.render('index'); });
+//app.get('/', function(req, res) { res.render('index'); });
 
 // Start listening for incoming HTTP connections.
 app.listen(process.env.PORT);
