@@ -30,7 +30,7 @@ var db = utils.connectToDatabase(USER_OR_GROUP_NAME);
 // Example of handling PUT to create or update a resource. /////////////////////
 // Here we create or update an item using the ID specified in the URI. /////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/parties/:id',      // TODO: change to suit your URI design.
+app.put('artists/albums/:id',      // TODO: change to suit your URI design.
   function(req, res) {
   
     // Get the item ID from the URI.
@@ -40,7 +40,7 @@ app.put('/parties/:id',      // TODO: change to suit your URI design.
     // See the form in `views/list-parties.ejs`.
     var item = req.body.item;
     
-    item.type = 'party'; // TODO: change to the type of item you want
+    item.type = 'album'; // TODO: change to the type of item you want
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -54,43 +54,45 @@ app.put('/parties/:id',      // TODO: change to suit your URI design.
   }
 );
 
-////////////////////////////////////////////////////////////////////////////////
-// Testing out the root resource logic//////////////////
-////////////////////////////////////////////////////////////////////////////////
-app.get('/parties/',         // TODO: change to suit your URI design. 
-  function(req, res) {
 
-    var item_type = 'party'; // TODO: change to the type of item you want.
-
-    // Get all items of the specified type from the database.
-    db.getAll(item_type, function(err, items) {
-
-      // If there was a database error, return an error status.
-      if (err) { res.send(err, 500); } 
-
-      // Otherwise, use the returned data to render an HTML page.
-      else {
-        res.render(
-          'list-parties',   // TODO: change to the name of your HTML template.
-          { items: items }
-        );
-      }
-    });
-  }
-);
 
 ////////////////////////////////////////////////////////////////////////////////
-// Example of handling POST to create a resource. //////////////////////////////
+// Example of handling POST to create an artist. //////////////////////////////
 // Here we create an item and allow the ID to be created automatically. ////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/candidates/', // TODO: change to suit your URI design.
+app.post('/artists/', // TODO: change to suit your URI design.
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
     // See the form in `views/one-party.ejs`.
     var item = req.body.item;
 
-    item.type = 'candidate'; // TODO: change to the type of item you want
+    item.type = 'artist'; // TODO: change to the type of item you want
+
+    // Save the new item to the database. (No ID specified, it will be created.)
+    db.save(item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// Example of handling POST to create an album. //////////////////////////////
+// Here we create an item and allow the ID to be created automatically. ////////
+////////////////////////////////////////////////////////////////////////////////
+app.post('/artists/albums/', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item info that was POSTed from the input form.
+    // See the form in `views/one-party.ejs`.
+    var item = req.body.item;
+
+    item.type = 'album'; // TODO: change to the type of item you want
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -108,7 +110,7 @@ app.post('/candidates/', // TODO: change to suit your URI design.
 // Another example of handling PUT to update a resource. ///////////////////////
 // Here we update an item using the ID specified in the URI. ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/candidates/:id', // TODO: change to suit your URI design.
+app.put('/artists/:id', // TODO: change to suit your URI design.
   function(req, res) {
   
     // Get the item ID from the URI.
@@ -118,7 +120,7 @@ app.put('/candidates/:id', // TODO: change to suit your URI design.
     // See the form in `views/one-candidate.ejs`.
     var item = req.body.item;
 
-    item.type = 'candidate'; // TODO: change to the type of item you want
+    item.type = 'artist'; // TODO: change to the type of item you want
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
