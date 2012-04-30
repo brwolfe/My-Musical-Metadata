@@ -10,14 +10,21 @@
 
     <% if (related_items.length > 0) { %>
         <ul id="Albums">
-        <% related_items.forEach(function(item) { %>
+        <% related_items.forEach(function(related_item) { %>
             <li class="SpecificAlbum">
-                <a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a>,
+                <a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a><br />
+                Genres: 
 <!-- how to loop through genres? -->
-<!-- here's a stab at it... -->
-                <% for (var key in item) { %>
-                    <% if (key === 'genre') { %>
-                 <span class="genre"><%=related_item[key]%></span>
+<!-- i think multiple genres would get stored as an array 
+(http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=Singular_vs_Plural_Property_Names#Singular_vs_Plural_Property_Names)...
+so maybe like this? -->
+<!-- if this works, update album, playlist, list views to do the same thing -->
+                <% var numGenres = related_item.genres.length; %>
+                <% for (var i=0; i<numGenres; i++) { %>
+                    <% if (i < (numGenres - 1)) { %>
+                        <span class="genre"><%=related_item.genres[i]%></span>, 
+                    <% } else { %>
+                        <span class="genre"><%=related_item.genres[i]%></span>
                     <% } %>
                 <% } %>
             </li>
