@@ -1,0 +1,9 @@
+- discuss resource types. should songs be a type? tracks? are they the same type or different?
+
+- add / wrangle forms to add / update each resource type.
+
+- address various issues with the views (see comments within individual docs)
+
+- add handler functions within app.js
+
+- add microdata (within all views)
