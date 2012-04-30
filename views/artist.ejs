@@ -8,7 +8,6 @@
   <body>
   <h1><%=item.name%>'s Albums:</h1>
 
-<!-- how do we establish that this should be a list of albums, not of artists? -->
     <% if (related_items.length > 0) { %>
         <ul id="Albums">
         <% related_items.forEach(function(item) { %>
