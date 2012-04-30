@@ -3,7 +3,16 @@
 - add / wrangle forms to add / update each resource type.
 
 - address various issues with the views (see comments within individual docs)
+    -All songs (from query)
+    -Single song
 
 - add handler functions within app.js
 
 - add microdata (within all views)
+
+Punt List
+    -Distinguishing "recording" from "song"
+        -New views and new handlers
+        -Establish many-to-many relationship
+    -Playlist
+    
