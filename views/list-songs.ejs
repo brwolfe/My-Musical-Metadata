@@ -1,48 +1,71 @@
+<!-- we need to update this with properties / values for the tags. should probably use whatever is used here (Artist?g=Tropicalia.html), but that file isn't working on github... -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BrandCramp: Songs</title>
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <a href="/"><h1>Songs</h1></a>
-    <% if (items.length > 0) { %>
-    <ul>
-      <% items.forEach(function(item) { %>
-      <li><a href="/albums/<%=item._id%>"><%=item.name%></a></li>
-      <% }); %>
-    </ul>
-    <% } else { %>
-    <div>No songs have been added.</div>
-    <% } %>
-    <div class="control">
-      <h2>Add or update an song</h2>
-      <script>
-      function onFormSubmit(form) {
-        form.action = form.action + form.elements['item[id]'].value;
-        console.log(form.action);
-        return true;
-      } 
-      </script>
-      <form method="post" action="/albums/"
-            onsubmit="return onFormSubmit(this);">
-        <!-- The line above dynamically sets the PUT destination when the -->
-        <!-- form is submitted. -------------------------------------------->
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-<!-- let's make this 'name' and let the database assign an id? -->
-        <label>Album ID<br>
-          (lowercase letters only, no spaces):
-          <input name="item[id]" type="text" pattern="[a-z]+" required
-                 placeholder="thebeatlesthewhitealbum">
-        </label>
-        <label>Artist name: 
-          <input name="item[name]" type="text" required
-                 placeholder="">
-        </label>
-       
-        <button>Add or update</button>
+    <head>
+        <title>BrandCramp: Songs</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <a href="/"><h1>Songs</h1></a>
+        <% if (items.length > 0) { %>
+            <ul>
+                <% items.forEach(function(item) { %>
+                <li><a href="/songs/<%=item._id%>"><%=item.name%></a></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div>No songs found.</div>
+        <% } %>
+        <div class="control">
+            <h2>Search for songs</h2>
+            <form method="get" action="/artists/">
+                <label>Song Title: <input name="name"></label>
+                <label>Artist: <input name="name"></label>
+                <label>Genre: 
+                    <select>
+          	            <option value="Disco">Disco</option>
+                  		<option value="Pop">Pop</option>
+                  		<option value="Scandinavian">Scandinavian</option>
+                  		<option value="Comedy">Comedy</option>
+                  		<option value="Polka">Polka</option>
+                  		<option value="Metal">Metal</option>
+                  		<option value="Jazz">Jazz</option>
+                  		<option value="Tropicalia">Tropicalia</option>
+                  		<option value="Lounge">Lounge</option>
+                  		<option value="Avant-garde">Avant-garde</option>
+                  		<option value="Experimental">Experimental</option>
+	                </select>
+                </label>
+                <label>Key: 
+                    <select>
+                      	<option value="C">C</option>
+                  		<option value="G">G</option>
+                  		<option value="D">C</option>
+                  		<option value="A">A</option>
+                  		<option value="E">E</option>
+                  		<option value="B">B</option>
+                  		<option value="F#">F#</option>
+                  		<option value="DFlat">D Flat</option>
+                  		<option value="AFlat">A Flat</option>
+                  		<option value="EFlat">EFlat</option>
+                  		<option value="BFlat">BFlat</option>
+                  		<option value="F">F</option>
+	                </select>
+                </label>
+                <label>Tempo: <input name="tempo"></label>
+                    
+        <button>Search</button>
       </form>
+    </div>
+    <div>
+        <h2>Add a new artist</h2>
+        <form method="post" action="/artists/">
+            <label>Artist name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <button>Add</button>
+        </form>
     </div>
   </body>
 </html>
