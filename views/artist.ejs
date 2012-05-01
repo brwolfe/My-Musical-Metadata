@@ -12,29 +12,47 @@
         <ul id="Albums">
         <% related_items.forEach(function(related_item) { %>
             <li class="SpecificAlbum">
-                <a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a><br />
-                Genres: 
-<!-- how to loop through genres? -->
-<!-- i think multiple genres would get stored as an array 
-(http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=Singular_vs_Plural_Property_Names#Singular_vs_Plural_Property_Names)...
-so maybe like this? -->
-<!-- if this works, update album, playlist, list views to do the same thing -->
-                <% var numGenres = related_item.genres.length; %>
-                <% for (var i=0; i<numGenres; i++) { %>
-                    <% if (i < (numGenres - 1)) { %>
-                        <span class="genre"><%=related_item.genres[i]%></span>, 
-                    <% } else { %>
-                        <span class="genre"><%=related_item.genres[i]%></span>
-                    <% } %>
-                <% } %>
+                <strong><a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                <%=item.datePublished%><br />
+                Genres:
             </li>
         <% }); %>
         </ul>
     <% } else { %>
         <div>No albums have been added for <%=item.name%>.</div>
     <% } %>
-
     </ul>
+
+    <div>
+        <h2>Add an album for <%=item.name%></h2>
+        <form method="post" action="/albums/">
+            <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
+            <label>Album name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <label>Year published:
+                <input name="item[datePublished]" type="text"
+                    />
+            </label>
+            <label>Genre(s):
+                <select name="item[genres]" multiple>
+      	            <option value="Disco">Disco</option>
+  		            <option value="Pop">Pop</option>
+            		<option value="Scandinavian">Scandinavian</option>
+             		<option value="Comedy">Comedy</option>
+             		<option value="Polka">Polka</option>
+            		<option value="Metal">Metal</option>
+            		<option value="Jazz">Jazz</option>
+             		<option value="Tropicalia">Tropicalia</option>
+             		<option value="Lounge">Lounge</option>
+            		<option value="Avant-garde">Avant-garde</option>
+            		<option value="Experimental">Experimental</option>
+            	</select>
+            </label>
+            <button>Add</button>
+        </form>
+    </div>
   </body>
 
 </html>
