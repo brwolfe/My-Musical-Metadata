@@ -1,7 +1,3 @@
-// This is a sample application which you can use as a starting point for your
-// project. The only parts you should *need* to change are indicated with `TODO`
-// below. However, you are welcome to change more if you wish.
-
 ////////////////////////////////////////////////////////////////////////////////
 
 var USER_OR_GROUP_NAME = 'steampunkunicorn'; // TODO: Insert GitHub username or group name.
@@ -52,8 +48,8 @@ app.get('/artists/',         // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET a single artist resource, which is a list of albums. //////////////////////////
-// Also get the artist's albums.///////////////////////////////////////////
+// GET a single artist resource, which is a list of albums. ////////////////////
+// Also get the artist's albums.////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/artists/:id',       // TODO: change to suit your URI design.
   function(req, res) {
@@ -97,8 +93,7 @@ app.get('/artists/:id',       // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET a list of albums. /////////////////////////
-///////////////////////////////////////
+// GET a list of albums. ///////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/albums/',         // TODO: change to suit your URI design. 
   function(req, res) {
@@ -123,8 +118,8 @@ app.get('/albums/',         // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET a single album resource, which a list of dependent songs. //////////////////////////
-// Get those too as related items. //////////////////////////////////////////
+// GET a single album resource, which a list of dependent songs. ///////////////
+// Get those too as related items. /////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/albums/:id',       // TODO: change to suit your URI design.
   function(req, res) {
@@ -168,8 +163,8 @@ app.get('/albums/:id',       // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET the allsongs resource, which is a list of songs, with dependent type artist. //////////////////////////
-// Get the artist too.///////////////////////////////////////////
+// GET the allsongs resource, which is a list of songs./////////////////////////
+// Get the dependent type artist too.///////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/songs/',       // TODO: change to suit your URI design.
   function(req, res) {
@@ -282,8 +277,7 @@ app.get('/',         // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// Example of handling POST to create an artist. //////////////////////////////
-// Here we create an item and allow the ID to be created automatically. ////////
+// POST to create an artist (ID created automatically). ////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.post('/artists/', // TODO: change to suit your URI design.
   function(req, res) {
@@ -296,6 +290,135 @@ app.post('/artists/', // TODO: change to suit your URI design.
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// POST to create an album (ID created automatically). /////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.post('/albums/', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item info that was POSTed from the input form.
+    // See the form in `views/one-party.ejs`.
+    var item = req.body.item;
+
+    item.type = 'album'; // TODO: change to the type of item you want
+
+    // Save the new item to the database. (No ID specified, it will be created.)
+    db.save(item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// POST to create a song (ID created automatically). ///////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.post('/songs/', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item info that was POSTed from the input form.
+    // See the form in `views/one-party.ejs`.
+    var item = req.body.item;
+
+    item.type = 'song'; // TODO: change to the type of item you want
+
+    // Save the new item to the database. (No ID specified, it will be created.)
+    db.save(item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// PUT to update an artist. ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.put('/artists/:id', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+
+    // Get the item info that was PUT from the input form.
+    // See the form in `views/one-candidate.ejs`.
+    var item = req.body.item;
+
+    item.type = 'artist'; // TODO: change to the type of item you want
+
+    // Save the new item to the database, specifying the ID.
+    db.save(item_id, item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// PUT to update an album. /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.put('/albums/:id', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+
+    // Get the item info that was PUT from the input form.
+    // See the form in `views/one-candidate.ejs`.
+    var item = req.body.item;
+
+    item.type = 'album'; // TODO: change to the type of item you want
+
+    // Save the new item to the database, specifying the ID.
+    db.save(item_id, item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
+////////////////////////////////////////////////////////////////////////////////
+// PUT to update a song. ///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.put('/songs/:id', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+
+    // Get the item info that was PUT from the input form.
+    // See the form in `views/one-candidate.ejs`.
+    var item = req.body.item;
+
+    item.type = 'song'; // TODO: change to the type of item you want
+
+    // Save the new item to the database, specifying the ID.
+    db.save(item_id, item, function(err) {
 
       // If there was a database error, return an error status.
       if (err) { res.send(err, 500); } 
