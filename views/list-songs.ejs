@@ -18,49 +18,68 @@
         <% } %>
         <div class="control">
             <h2>Search for songs</h2>
-            <form method="get" action="/artists/">
-                <label>Song Title: <input name="name"></label>
-                <label>Artist: <input name="name"></label>
-                <label>Genre: 
-                    <select>
-          	            <option value="Disco">Disco</option>
-                  		<option value="Pop">Pop</option>
-                  		<option value="Scandinavian">Scandinavian</option>
-                  		<option value="Comedy">Comedy</option>
-                  		<option value="Polka">Polka</option>
-                  		<option value="Metal">Metal</option>
-                  		<option value="Jazz">Jazz</option>
-                  		<option value="Tropicalia">Tropicalia</option>
-                  		<option value="Lounge">Lounge</option>
-                  		<option value="Avant-garde">Avant-garde</option>
-                  		<option value="Experimental">Experimental</option>
-	                </select>
-                </label>
-                <label>Key: 
-                    <select>
-                      	<option value="C">C</option>
-                  		<option value="G">G</option>
-                  		<option value="D">C</option>
-                  		<option value="A">A</option>
-                  		<option value="E">E</option>
-                  		<option value="B">B</option>
-                  		<option value="F#">F#</option>
-                  		<option value="DFlat">D Flat</option>
-                  		<option value="AFlat">A Flat</option>
-                  		<option value="EFlat">EFlat</option>
-                  		<option value="BFlat">BFlat</option>
-                  		<option value="F">F</option>
-	                </select>
-                </label>
-                <label>Tempo: <input name="tempo"></label>
+    <form id="SearchSongGenre" action="/songs/" method="get">
+    By Genre: 
+    <select>
+  		<option value="Disco">Disco</option>
+  		<option value="Pop">Pop</option>
+  		<option value="Scandinavian">Scandinavian</option>
+  		<option value="Comedy">Comedy</option>
+  		<option value="Polka">Polka</option>
+  		<option value="Metal">Metal</option>
+  		<option value="Jazz">Jazz</option>
+  		<option value="Tropicalia">Tropicalia</option>
+  		<option value="Lounge">Lounge</option>
+  		<option value="Avant-garde">Avant-garde</option>
+  		<option value="Experimental">Experimental</option>
+	</select>
+	<input type="submit" value="Submit" name="SubmitButton" />
+    </form>
+
+    <form id="SearchSongKey" action="/songs/" method="get">
+    By Key (Enharmonic Equivalents Not Listed): 
+	<select>
+        <option value="A">A Maj.</option>
+        <option value="a">a min.</option>
+      	<option value="G#">A&#9837; Maj.</option>
+        <option value="B">B Maj.</option>
+        <option value="b">b min.</option>
+        <option value="A#">B&#9837; Maj.</option>
+        <option value="a#">b&#9837; min.</option>
+  		<option value="C">C Maj.</option>
+        <option value="c">c min.</option>
+        <option value="c#">c# min.</option>
+  		<option value="D">D Maj.</option>
+        <option value="C#">D&#9837; Maj.</option>
+        <option value="d">d min.</option>
+        <option value="d#">d# min.</option>
+      	<option value="D#">E&#9837; Maj.</option>
+  		<option value="E">E Maj.</option>
+        <option value="e">e min.</option>
+  		<option value="F">F Maj.</option>
+        <option value="f">f min.</option>
+        <option value="F#">F# Maj.</option>
+        <option value="f#">f# min.</option>
+        <option value="G">G Maj.</option>
+        <option value="g">g min.</option>
+        <option value="g#">g# min.</option>
+	</select>
+	<input type="submit" value="Submit" name="SubmitButton" />
+    </form>
+
+    <form id="SearchSongTempo" action="/songs/" method="get">
+    By Tempo: 
+	<input type="text" name="TempoBox" />
+	<input type="submit" value="Submit" name="SubmitButton" />
+    </form>
                     
         <button>Search</button>
       </form>
     </div>
     <div>
-        <h2>Add a new artist</h2>
+        <h2>Add a new song</h2>
         <form method="post" action="/artists/">
-            <label>Artist name:
+            <label>Song name:
                 <input name="item[name]" type="text" required
                     />
             </label>

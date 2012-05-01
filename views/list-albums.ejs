@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BrandCramp: Album</title>
+    <title>BrandCramp: Albums</title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
@@ -16,6 +16,13 @@
     <% } else { %>
     <div>No albums have been added.</div>
     <% } %>
+
+      <h2>Search for albums by name</h2>
+      <form method="get" action="/albums/">
+        <label>Album name: <input name="name"></label>
+        <button>Search</button>
+      </form>
+
     <div class="control">
       <h2>Add or update an album</h2>
       <script>
