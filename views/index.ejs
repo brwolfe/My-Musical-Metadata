@@ -112,7 +112,19 @@
 
     <form id="SearchSongTempo" action="/songs/" method="get">
     Search Songs By Tempo: 
-	<input type="text" name="TempoBox" />
+	<select>
+        <option value="larghissimo">Larghissimo</option>
+        <option value="grave">Grave</option>
+        <option value="lento">Lento</option>
+        <option value="larghetto">Larghetto</option>
+        <option value="adagio">Adagio</option>
+        <option value="andante">Andante</option>
+        <option value="moderato">Moderato</option>
+        <option value="allegretto">Allegretto</option>
+        <option value="allegro">Allegro</option>
+        <option value="presto">Presto</option>
+    	<option value="prestissimo">Prestissimo</option>
+    </select>
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
     
