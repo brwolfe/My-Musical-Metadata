@@ -11,7 +11,7 @@
     -Single song
 
 - add handler functions within app.js
-[apl and sed working on this.]
+[i think we've got a working version now in yetanotherapp.js. will see as more of the views / forms come online...]
 
 - add microdata (within all views)
 [dbs is working on this.]
