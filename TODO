@@ -3,6 +3,7 @@
 
 - add / wrangle forms to add / update each resource type.
 [planning to work on this today - sed]
+[update: got post working for artists, albums. tried put / update for artists but it's not working yet.]
 
 - query forms
 
