@@ -8,19 +8,63 @@
   
   <h1><%=item.byArtist%> -- <%=item.name%></h1>
 
-<!-- how do we loop through the songs on the album here? -->
-<!-- ...thinking they should be related_items, but then songs need to be an item? -->
+  <div>
     <% if (related_items.length > 0) { %>
     <ol id="Songs">
       <% related_items.forEach(function(related_item) { %>
       <li class="Song">
-<!-- what if anything do we link to here? do we want a song template? -->
-        <a rel="Song" href=""><%=related_item.name%></a>,
+        <strong><a rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
 
-<!-- how do we loop through these properties? -->
-        <span class="genre"><%=related_item.genre%></span>, <span class="genre"><%=related_item.genre%></span>,
-        <span class="key"><%=related_item.key%></span>, <span class=key"><%=related_item.key%></span>,
-        <span class="tempo"><%=related_item.tempo%></span>, <span class="tempo"><%=related_item.tempo%></span>.
+        <% if (related_item.genres !== undefined) { %>
+            Genres:
+            <% if (related_item.genres instanceof Array) { %>
+                <% var numGenres = related_item.genres.length; %>
+                <% for (var i=0; i<numGenres; i++) { %>
+                    <% if (i < (numGenres - 1)) { %>
+                        <span class="genre"><%=related_item.genres[i]%></span>, 
+                    <% } else { %>
+                        <span class="genre"><%=related_item.genres[i]%></span>
+                    <% } %>
+                    <br />
+                <% } %>
+            <% } else { %>
+                <span class="genre"><%=related_item.genres%></span><br />
+            <% } %>
+        <% } %>
+
+        <% if (related_item.keys !== undefined) { %>
+            Key:
+            <% if (related_item.keys instanceof Array) { %>
+                <% var numKeys = related_item.keys.length; %>
+                <% for (var i=0; i<numKeys; i++) { %>
+                    <% if (i < (numKeys - 1)) { %>
+                        <span class="key"><%=related_item.keys[i]%></span>, 
+                    <% } else { %>
+                        <span class="key"><%=related_item.keys[i]%></span>
+                    <% } %>
+                    <br />
+                <% } %>
+            <% } else { %>
+                <span class="key"><%=related_item.keys%></span><br />
+            <% } %>
+        <% } %>
+
+        <% if (related_item.tempos !== undefined) { %>
+            Tempo:
+            <% if (related_item.tempos instanceof Array) { %>
+                <% var numTempos = related_item.tempos.length; %>
+                <% for (var i=0; i<numTempos; i++) { %>
+                    <% if (i < (numTempos - 1)) { %>
+                        <span class="tempo"><%=related_item.tempos[i]%></span>, 
+                    <% } else { %>
+                        <span class="tempo"><%=related_item.tempos[i]%></span>
+                    <% } %>
+                    <br />
+                <% } %>
+            <% } else { %>
+                <span class="tempo"><%=related_item.tempos%></span><br />
+            <% } %>
+        <% } %>
 
       </li>
       <% }); %>
@@ -28,6 +72,108 @@
     <% } else { %>
     <div>No songs listed for <%=item.name%>.</div>
     <% } %>
+  </div>
+  
+      <div>
+        <h2>Add a song to <%=item.name%></h2>
+        <form method="post" action="/songs/" id="addSong">
+            <input type="hidden" name="item[inAlbum]" value="<%=item._id%>">
+            <label>Song name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <label>Year published:
+                <input name="item[datePublished]" type="text"
+                    />
+            </label>
+            <label>Genre(s):
+                <select name="item[genres]" multiple>
+                      <option value="Disco">Disco</option>
+  		            <option value="Pop">Pop</option>
+            		<option value="Scandinavian">Scandinavian</option>
+             		<option value="Comedy">Comedy</option>
+             		<option value="Polka">Polka</option>
+            		<option value="Metal">Metal</option>
+            		<option value="Jazz">Jazz</option>
+             		<option value="Tropicalia">Tropicalia</option>
+             		<option value="Lounge">Lounge</option>
+            		<option value="Avant-garde">Avant-garde</option>
+            		<option value="Experimental">Experimental</option>
+            	</select>
+            </label>
+            <label>Key(s):
+                <select name="item[keys]" multiple>
+                    <option value="A">A Maj.</option>
+                    <option value="a">a min.</option>
+        	        <option value="G#">A&#9837; Maj.</option>
+                    <option value="B">B Maj.</option>
+                    <option value="b">b min.</option>
+                    <option value="A#">B&#9837; Maj.</option>
+                    <option value="a#">b&#9837; min.</option>
+  	    	        <option value="C">C Maj.</option>
+                    <option value="c">c min.</option>
+                    <option value="c#">c# min.</option>
+  	    	        <option value="D">D Maj.</option>
+                    <option value="C#">D&#9837; Maj.</option>
+                    <option value="d">d min.</option>
+                    <option value="d#">d# min.</option>
+          	        <option value="D#">E&#9837; Maj.</option>
+  		            <option value="E">E Maj.</option>
+                    <option value="e">e min.</option>
+  		            <option value="F">F Maj.</option>
+                    <option value="f">f min.</option>
+                    <option value="F#">F# Maj.</option>
+                    <option value="f#">f# min.</option>
+                    <option value="G">G Maj.</option>
+                    <option value="g">g min.</option>
+                    <option value="g#">g# min.</option>
+	            </select>
+            </label>
+            <label>Tempo:
+                <input type="text" name="item[tempos]" class="tempoInput"
+                    />
+                <a href="#" data-action="add">add another tempo</a>
+                <a href="#" data-action="delete">delete tempo</a>
+                <br />
+            </label>
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+jQuery(function($) {
+
+    var multiTempo = $("#addSong");
+
+    function handler(e) {
+        var jqEl = $(e.currentTarget);
+        var tempo = jqEl.parent();
+        switch (jqEl.attr("data-action")) {
+        case "add":
+            tempo.after(tempo.clone().find("input").val("").end());
+            break;
+        case "delete":
+            tempo.remove();
+            break;
+        }
+        return false;
+    }
+
+    function save(e) {
+        var tempos = multiTempo.find("input.tempoInput").map(function() {
+            return $(this).val();
+        }).get().join(',');
+        alert(tempos);
+        return false;
+    }
+
+    multiTempo.submit(save).find("a").live("click", handler);
+});
+});//]]>  
+
+</script>
 
 </body>
 </html>

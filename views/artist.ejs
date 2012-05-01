@@ -13,9 +13,11 @@
         <% related_items.forEach(function(related_item) { %>
             <li class="SpecificAlbum">
                 <strong><a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+
                 <% if (related_item.datePublished !== undefined) { %>
                     <%=related_item.datePublished%><br />
                 <% } %>
+                
                 <% if (related_item.genres !== undefined) { %>
                     Genres:
                     <% if (related_item.genres instanceof Array) { %>
@@ -29,8 +31,9 @@
                         <% } %>
                     <% } else { %>
                         <span class="genre"><%=related_item.genres%></span>
-                    <% } %>
+                    <% } %>                
                 <% } %>
+                
             </li>
         <% }); %>
         </ul>
