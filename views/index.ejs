@@ -10,10 +10,19 @@
 <!-- do we want to actually include these lists on the page like in Page's original (https://github.com/dotlikeimpact/BrandCramp/blob/master/index.html)? -->
     <div>
       <a href="/artists/"><h2>List of Recording Artists</h2></a>
+        <% if (items.length > 0) { %>
+            <ul>
+            <% items.forEach(function(item) { %>
+                <li><a href="/artists/<%=item._id%>"><%=item.name%></a></li>
+            <% }); %>
+            </ul>
+        <% } else { %>
+            <div>No artists found.</div>
+        <% } %>
+    </div>
     <div>
-    <div>
-      <a href="/artists/album_title/"><h2>List of Albums</h2></a>
-    <div>
+      <a href="/albums/"><h2>List of Albums</h2></a>
+    </div>
 
  <div id="Search">
 <!--should the action just be /artists/? (based on candidates example at https://github.com/sils-webinfo/election/blob/master/views/list-candidates.ejs)
