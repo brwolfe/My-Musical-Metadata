@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BrandCamp: Home</title>
+    <title>BrandCramp: Home</title>
   </head>
 
   <body>
@@ -25,9 +25,7 @@
     </div>
 
  <div id="Search">
-<!--should the action just be /artists/? (based on candidates example at https://github.com/sils-webinfo/election/blob/master/views/list-candidates.ejs)
-i'm thinking the search view will be the same as the list view, just filtered?-->
-    <form id="SearchArtist" action="./Artist?g={form data}" method="get">
+    <form id="SearchArtist" action="/artists/" method="get">
     Search Artists By Genre: 
     <select>
   		<option value="Disco">Disco</option>
@@ -45,8 +43,7 @@ i'm thinking the search view will be the same as the list view, just filtered?--
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
 
-<!-- same here? -->
-    <form id="SearchAlbum" action="./Album?g={form data}" method="get">
+    <form id="SearchAlbum" action="/albums/" method="get">
     Search Albums By Genre: 
 	<select>
   		<option value="Disco">Disco</option>
@@ -64,9 +61,7 @@ i'm thinking the search view will be the same as the list view, just filtered?--
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
 
-<!-- and here? -->
-<!-- does this mean we need a songs list view? -->
-    <form id="SearchSongGenre" action="./Songs?g={form data}" method="get">
+    <form id="SearchSongGenre" action="/songs/" method="get">
     Search Songs By Genre: 
 	<select>
   		<option value="Disco">Disco</option>
@@ -84,8 +79,7 @@ i'm thinking the search view will be the same as the list view, just filtered?--
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
 
-<!-- songs list view? -->
-    <form id="SearchSongKey" action="./Songs?k={form data}" method="get">
+    <form id="SearchSongKey" action="/songs/" method="get">
     Search Songs By Key (Enharmonic Equivalents Not Listed): 
 	<select>
         <option value="A">A Maj.</option>
@@ -116,8 +110,7 @@ i'm thinking the search view will be the same as the list view, just filtered?--
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
 
-<!-- songs list view? -->
-    <form id="SearchSongTempo" action="./Songs?t={form data}" method="get">
+    <form id="SearchSongTempo" action="/songs/" method="get">
     Search Songs By Tempo: 
 	<input type="text" name="TempoBox" />
 	<input type="submit" value="Submit" name="SubmitButton" />
