@@ -214,7 +214,7 @@ app.get('/songs/',       // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // GET a single song resource with a list of related albums. ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/song/:id',       // TODO: change to suit your URI design.
+app.get('/songs/:id',       // TODO: change to suit your URI design.
   function(req, res) {
 
     var item_type = 'song'; // TODO: change to the type of item you want.
