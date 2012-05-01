@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
   <head>
-    <title>BrandCramp: <%=item.name%></title>
+    <title>Albums by <%=item.name%></title>
   </head>
 
   <body>
@@ -46,6 +46,7 @@
         <h2>Add an album for <%=item.name%></h2>
         <form method="post" action="/albums/">
             <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
+            <input type="hidden" name="item[artistName]" value="<%=item.name%>">
             <label>Album name:
                 <input name="item[name]" type="text" required
                     />
