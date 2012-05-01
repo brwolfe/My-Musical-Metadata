@@ -78,7 +78,7 @@ app.get('/artists/:id',       // TODO: change to suit your URI design.
         
         // Get all items of the specified related type.
         db.getSome(related_type, req.query, function(err, items) {
-console.log(req.query);
+       
           // If there was a database error, return an error status.
           if (err) { res.send(err, 500); } 
 
