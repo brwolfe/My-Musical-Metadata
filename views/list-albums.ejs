@@ -23,34 +23,5 @@
         <button>Search</button>
       </form>
 
-    <div class="control">
-      <h2>Add or update an album</h2>
-      <script>
-      function onFormSubmit(form) {
-        form.action = form.action + form.elements['item[id]'].value;
-        console.log(form.action);
-        return true;
-      } 
-      </script>
-      <form method="post" action="/albums/"
-            onsubmit="return onFormSubmit(this);">
-        <!-- The line above dynamically sets the PUT destination when the -->
-        <!-- form is submitted. -------------------------------------------->
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-<!-- let's make this 'name' and let the database assign an id? -->
-        <label>Album ID<br>
-          (lowercase letters only, no spaces):
-          <input name="item[id]" type="text" pattern="[a-z]+" required
-                 placeholder="thebeatlesthewhitealbum">
-        </label>
-        <label>Artist name: 
-          <input name="item[name]" type="text" required
-                 placeholder="">
-        </label>
-       
-        <button>Add or update</button>
-      </form>
-    </div>
   </body>
 </html>
