@@ -18,13 +18,17 @@
                 <% } %>
                 <% if (related_item.genres !== undefined) { %>
                     Genres:
-                    <% var numGenres = related_item.genres.length; %>
-                    <% for (var i=0; i<numGenres; i++) { %>
-                        <% if (i < (numGenres - 1)) { %>
-                            <span class="genre"><%=related_item.genres[i]%></span>, 
-                        <% } else { %>
-                            <span class="genre"><%=related_item.genres[i]%></span>
+                    <% if (related_item.genres instanceof Array) { %>
+                        <% var numGenres = related_item.genres.length; %>
+                        <% for (var i=0; i<numGenres; i++) { %>
+                            <% if (i < (numGenres - 1)) { %>
+                                <span class="genre"><%=related_item.genres[i]%></span>, 
+                            <% } else { %>
+                                <span class="genre"><%=related_item.genres[i]%></span>
+                            <% } %>
                         <% } %>
+                    <% } else { %>
+                        <span class="genre"><%=related_item.genres%></span>
                     <% } %>
                 <% } %>
             </li>
