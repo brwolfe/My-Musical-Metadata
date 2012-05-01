@@ -73,10 +73,12 @@ app.get('/artists/:id',       // TODO: change to suit your URI design.
         
         var related_type = 'album'; // TODO: change to type of related item.
 
-        req.query.artist = item_id;
+        req.query.byArtist = item_id;
+        
+        
         // Get all items of the specified related type.
         db.getSome(related_type, req.query, function(err, items) {
-
+console.log(req.query);
           // If there was a database error, return an error status.
           if (err) { res.send(err, 500); } 
 
