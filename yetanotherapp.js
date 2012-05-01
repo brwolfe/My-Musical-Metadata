@@ -281,6 +281,31 @@ app.get('/',         // TODO: change to suit your URI design.
   }
 );
 
+////////////////////////////////////////////////////////////////////////////////
+// Example of handling POST to create an artist. //////////////////////////////
+// Here we create an item and allow the ID to be created automatically. ////////
+////////////////////////////////////////////////////////////////////////////////
+app.post('/artists/', // TODO: change to suit your URI design.
+  function(req, res) {
+  
+    // Get the item info that was POSTed from the input form.
+    // See the form in `views/one-party.ejs`.
+    var item = req.body.item;
+
+    item.type = 'artist'; // TODO: change to the type of item you want
+
+    // Save the new item to the database. (No ID specified, it will be created.)
+    db.save(item, function(err) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+      
+      // Otherwise, redirect back to the URI from which the form was submitted.
+      else { res.redirect('back' ); }
+    });
+  }
+);
+
 // Handle GET of the "index" resource.
 //app.get('/', function(req, res) { res.render('index'); });
 
