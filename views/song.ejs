@@ -1,77 +1,88 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-    <head>
-        <title>BrandCramp: <%=item.name%></title>
-    </head>
+  <head>
+    <title>BrandCramp: <%=item.name%></title>
+  </head>
 
-    <body>
-        <div itemscope>
-            <h1 itemprop="name"><%=item.name%></h1>
-    
-            <p>Artist:
-                <span itemprop="byArtist">
-                    <%=item.byArtist%>
-                </span>
-            </p>            
-    
-            <p>Date published:
-                <span itemprop="datePublished">
-                    <%=item.date%>
-                </span>
-            </p>
-    
-            <p>Duration:
-                <span itemprop="duration">
-                    <%=item.duration%>
-                </span>
-            </p>           
-    
-            <p>Genre:
+  <body>
+    <div itemscope>
+    <h1 itemprop="name"><%=item.name%></h1>
+
+    <p>Artist:
+        <span itemprop="byArtist">
+            <%=item.artistName%>
+        </span>
+    </p>            
+
+    <% if (item.datePublished !== undefined) { %>
+        <p>Date published: 
+            <span itemprop="datePublished"><%=item.datePublished%></span>
+        </p>
+    <% } %>           
+
+    <% if (item.genres !== undefined) { %>
+        <p>Genres:
+            <% if (item.genres instanceof Array) { %>
                 <% var numGenres = item.genres.length; %>
-                    <% for (var i=0; i<numGenres; i++) { %>
-                        <% if (i < (numGenres - 1)) { %>
-                            <span class="genre" itemprop="genre"><%=item.genres[i]%></span>, 
-                        <% } else { %>
-                            <span class="genre" itemprop="genre"><%=item.genres[i]%></span>
-                        <% } %>
+                <% for (var i=0; i<numGenres; i++) { %>
+                    <% if (i < (numGenres - 1)) { %>
+                        <span class="genre" itemprop="genre"><%=item.genres[i]%></span>, 
+                    <% } else { %>
+                        <span class="genre" itemprop="genre"><%=item.genres[i]%></span>
                     <% } %>
-            </p>
-    
-            <p>Tempo:
-                <% var numTempo = item.tempo.length; %>
-                    <% for (var i=0; i<numTempo; i++) { %>
-                        <% if (i < (numTempo - 1)) { %>
-                            <span class="tempo" itemprop="tempo"><%=item.tempo[i]%></span>, 
-                        <% } else { %>
-                            <span class="tempo" itemprop="tempo"><%=item.tempo[i]%></span>
-                        <% } %>
-                    <% } %>
-            </p>
-    
-            <p>Key:
-                <% var numKey = item.key.length; %>
-                    <% for (var i=0; i<numKey; i++) { %>
-                        <% if (i < (numKey - 1)) { %>
-                            <span class="key" itemprop="key"><%=item.key[i]%></span>, 
-                        <% } else { %>
-                            <span class="key" itemprop="key"><%=item.key[i]%></span>
-                        <% } %>
-                    <% } %>
-            </p>
-    
-            <% if (related_items.length > 0) { %>
-                <ul id="Albums">
-                    <% related_items.forEach(function(related_item) { %>
-                        <li class="SpecificAlbum" itemprop="inAlbum">
-                            <a rel="Album" href="artist/albums/<%=related_item._id%>"><%=related_item.name%></a><br />
-                        </li>
-                    <% }); %>
-                </ul>
+                    <br />
+                <% } %>
             <% } else { %>
-                <div><%=item.name%> does not appear on any albums.</div>
+                <span class="genre" itemprop="genre"><%=item.genres%></span><br />
             <% } %>
-                </ul>
-        </div>
-    </body>
+        </p>
+    <% } %>
+
+    <% if (item.tempos !== undefined) { %>
+        <p>Tempo:
+            <% if (item.tempos instanceof Array) { %>
+                <% var numTempos = item.tempos.length; %>
+                <% for (var i=0; i<numTempos; i++) { %>
+                    <% if (i < (numTempos - 1)) { %>
+                        <span class="tempo" itemprop="tempo"><%=item.tempos[i]%></span>, 
+                    <% } else { %>
+                        <span class="tempo" itemprop="tempo"><%=item.tempos[i]%></span>
+                    <% } %>
+                    <br />
+                <% } %>
+            <% } else { %>
+                <span class="tempo" itemprop="tempo"><%=item.tempos%></span><br />
+            <% } %>
+        </p>
+    <% } %>
+
+
+    <% if (item.keys !== undefined) { %>
+        <p>Key:
+            <% if (item.keys instanceof Array) { %>
+                <% var numKeys = item.keys.length; %>
+                <% for (var i=0; i<numKeys; i++) { %>
+                    <% if (i < (numKeys - 1)) { %>
+                        <span class="key" itemprop="key"><%=item.keys[i]%></span>, 
+                    <% } else { %>
+                        <span class="key" itemprop="key"><%=item.keys[i]%></span>
+                    <% } %>
+                    <br />
+                <% } %>
+            <% } else { %>
+                <span class="key" itemprop="key"><%=item.keys%></span><br />
+            <% } %>
+        </p>
+    <% } %>
+
+    <% if (item.duration !== undefined) { %>
+        <p>Duration:
+            <span itemprop="duration"><%=item.duration%></span><br />
+        </p>
+    <% } %>
+    
+    </div>
+  </body>
+
 </html>
