@@ -1,8 +1,10 @@
 - discuss resource types. should songs be a type? tracks? are they the same type or different?
-[for now we are ignoring playlists. song will be a resource type, and list of songs. dbs is working on adding these.]
+[for now we are ignoring playlists. song will be a resource type, and list of songs. views added for the new resource types.]
 
 - add / wrangle forms to add / update each resource type.
-[dbs is working on these.]
+[planning to work on this today - sed]
+
+- query forms
 
 - address various issues with the views (see comments within individual docs)
     -All songs (from query)
@@ -12,6 +14,10 @@
 [apl and sed working on this.]
 
 - add microdata (within all views)
+[dbs is working on this.]
+
+-make sure everything has the appropriate classes etc
+["Your HTML representations must include the proper hypermedia controls for linking representations to one another, creating query URIs from templates, and updating resources both idempotently and non-idempotently. Your HTML controls must have appropriate id attribute values, class attribute values, name attribute values, and rel attribute values that describe their meaning and purpose (this was the work you did for the Designing a Hypermedia Type assignment)."]
 
 Punt List
     -Distinguishing "recording" from "song"
