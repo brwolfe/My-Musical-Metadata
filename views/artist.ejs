@@ -6,25 +6,28 @@
   </head>
 
   <body>
-  <h1><%=item.name%>'s Albums:</h1>
+    <div itemscope="http://schema.org/MusicGroup">
+  <h1><span itemprop="name"><%=item.name%></span>'s Albums:</h1>
 
     <% if (related_items.length > 0) { %>
         <ul id="Albums">
         <% related_items.forEach(function(related_item) { %>
             <li class="SpecificAlbum">
-                <strong><a rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                <strong><span itemprop="album" itemscope itemtype="MusicAlbum"><a itemprop="name" rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
 
                 <% if (related_item.datePublished !== undefined) { %>
-                    <%=related_item.datePublished%><br />
+                    <span itemprop="datePublished"><%=related_item.datePublished%><br /></span>
                 <% } %>
                 
             </li>
         <% }); %>
         </ul>
+    </span>
     <% } else { %>
         <div>No albums have been added for <%=item.name%>.</div>
     <% } %>
     </ul>
+    </div>
 
     <div>
         <h2>Add an album for <%=item.name%></h2>

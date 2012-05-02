@@ -5,15 +5,15 @@
   </head>
   
   <body>
-  
-  <h1><%=item.artistName%> -- <%=item.name%></h1>
+  <div itemscope="http://schema.org/MusicAlbum">
+  <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></h1></span>
 
   <div>
     <% if (related_items.length > 0) { %>
     <ol id="Songs">
       <% related_items.forEach(function(related_item) { %>
       <li class="Song">
-        <strong><a rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+        <strong><span itemprop="track" itemscope itemtype="MusicTrack"><a itemprop="name" rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
         
         <% if (related_item.trackNumber !== undefined) { %>
             Track <%=related_item.trackNumber%><br />
@@ -25,14 +25,14 @@
                 <% var numGenres = related_item.genres.length; %>
                 <% for (var i=0; i<numGenres; i++) { %>
                     <% if (i < (numGenres - 1)) { %>
-                        <span class="genre"><%=related_item.genres[i]%></span>, 
+                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>, 
                     <% } else { %>
-                        <span class="genre"><%=related_item.genres[i]%></span>
+                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
                     <% } %>
                     <br />
                 <% } %>
             <% } else { %>
-                <span class="genre"><%=related_item.genres%></span><br />
+                <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
             <% } %>
         <% } %>
 
@@ -69,15 +69,16 @@
                 <span class="tempo"><%=related_item.tempos%></span><br />
             <% } %>
         <% } %>
-        
+        <span itemprop="duration">
         <% if (related_item.duration !== undefined) { %>
             <%=related_item.duration%><br />
         <% } %>
-
+        </span>
       </li>
       <% }); %>
     </ol>
     <% } else { %>
+    </span>
     <div>No songs listed for <%=item.name%>.</div>
     <% } %>
   </div>
