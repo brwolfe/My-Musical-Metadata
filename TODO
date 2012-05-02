@@ -17,8 +17,12 @@
 [TO DO: make queries work...]
 
 - add microdata (within all views)
+<<<<<<< HEAD
 [dbs is working on this.]
     Album.ejs - DONE(?)
+=======
+    Album.ejs - DONE - TESTED
+>>>>>>> 085bedbb3a3939cbeb19b84f43b5a0064a1b8472
     Artist.ejs - DONE(?)
     index.ejs - DONE(?)
     list-albums.ejs - DONE

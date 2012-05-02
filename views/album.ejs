@@ -1,19 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>BrandCramp: <%=item.name%></title>
     </head>
   
     <body>
-    <a href="/"><h1>All the Musics</h1></a>
-
-    <div>
-      <a href="/artists/"><h2>All Recording Artists</h2></a>
-        
-    <div>
-        <a href="/albums/"><h2>All Albums</h2></a>
-            
-    </div>
-
         <div itemscope itemtype="http://schema.org/MusicAlbum">
             <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
             <div>
@@ -39,8 +30,8 @@
                                         <% } else { %>
                                             <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
                                         <% } %>
-                                    <br />
                                     <% } %>
+                                    <br />
                                 <% } else { %>
                                     <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
                                 <% } %>
@@ -56,8 +47,8 @@
                                         <% } else { %>
                                             <span itemprop="key" class="key"><%=related_item.keys[i]%></span>
                                         <% } %>
-                                    <br />
                                     <% } %>
+                                    <br />
                                 <% } else { %>
                                     <span itemprop="key" class="key"><%=related_item.keys%></span><br />
                                 <% } %>
@@ -73,8 +64,8 @@
                                         <% } else { %>
                                             <span itemprop="tempo" class="tempo"><%=related_item.tempos[i]%></span>
                                         <% } %>
-                                    <br />
                                     <% } %>
+                                    <br />
                                 <% } else { %>
                                     <span itemprop="tempo" class="tempo"><%=related_item.tempos%></span><br />
                                 <% } %>
@@ -99,11 +90,14 @@
         <input type="hidden" name="_method" value="put">
         <!-- The line above tells the server to treat this as a PUT request. -->
         <label>Name: 
-          <input name="item[name]" value="<%=item.name%>" type="text" required>
- <input type="hidden" name="item[datePublished]" value="<%=item.datePublished%>">
-                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
-                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+            <input name="item[name]" value="<%=item.name%>" type="text" required>
         </label>
+        <label>Date:
+            <input type="text" name="item[datePublished]" value="<%=item.datePublished%>">
+        </label>
+        <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
+        <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+        
         <button>Update</button>
       </form>
 </div>

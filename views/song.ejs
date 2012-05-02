@@ -6,16 +6,6 @@
   </head>
 
   <body>
- <a href="/"><h1>All the Musics</h1></a>
-
-    <div>
-      <a href="/artists/"><h2>All Recording Artists</h2></a>
-        
-    <div>
-        <a href="/albums/"><h2>All Albums</h2></a>
-            
-    </div>
-
     <div itemscope="http://schema.org/MusicRecording">
     <h1 itemprop="name"><%=item.name%></h1>
 
@@ -41,8 +31,8 @@
                     <% } else { %>
                         <span class="genre" itemprop="genre"><%=item.genres[i]%></span>
                     <% } %>
-                    <br />
                 <% } %>
+                <br />
             <% } else { %>
                 <span class="genre" itemprop="genre"><%=item.genres%></span><br />
             <% } %>
@@ -59,8 +49,8 @@
                     <% } else { %>
                         <span class="tempo" itemprop="musicRecording/tempo"><%=item.tempos[i]%></span>
                     <% } %>
-                    <br />
                 <% } %>
+                <br />
             <% } else { %>
                 <span class="tempo" itemprop="musicRecording/tempo"><%=item.tempos%></span><br />
             <% } %>
@@ -78,8 +68,8 @@
                     <% } else { %>
                         <span class="key" itemprop="musicRecording/key"><%=item.keys[i]%></span>
                     <% } %>
-                    <br />
                 <% } %>
+                <br />
             <% } else { %>
                 <span class="key" itemprop="musicRecording/key"><%=item.keys%></span><br />
             <% } %>
