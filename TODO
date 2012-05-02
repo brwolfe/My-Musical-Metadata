@@ -1,4 +1,5 @@
 - Make search work on multi-value fields
+[DONE.]
 - Search by name for each resource type
 - Check that all divs containing search forms have <id="Search">
 - Check that the "SubmitButton" name attribute is on all form attributes
