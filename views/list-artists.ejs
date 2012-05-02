@@ -12,9 +12,9 @@
 
     <h1>Artists</h1>
     <% if (items.length > 0) { %>
-    <ul>
+    <ul id="Artists">
       <% items.forEach(function(item) { %>
-      <li itemscope itemtype="http://schema.org/MusicGroup"><a itemprop="URL" rel="artist" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
+      <li itemscope itemtype="http://schema.org/MusicGroup" class="SpecificArtist"><a itemprop="URL" rel="artist" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
       <% }); %>
     </ul>
     <% } else { %>

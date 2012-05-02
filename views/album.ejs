@@ -14,7 +14,7 @@
             <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
             <div>
                 <% if (related_items.length > 0) { %>
-                    <ol id="Songs">
+                    <ul id="Songs">
                     <% related_items.forEach(function(related_item) { %>
                         <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
                             <strong><a itemprop="URL" rel="song" href="/songs/<%=related_item._id%>">
@@ -31,14 +31,14 @@
                                     <% var numGenres = related_item.genres.length; %>
                                     <% for (var i=0; i<numGenres; i++) { %>
                                         <% if (i < (numGenres - 1)) { %>
-                                            <span itemprop="musicRecording/genre" class="genre"><%=related_item.genres[i]%></span>, 
+                                            <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>, 
                                         <% } else { %>
-                                            <span itemprop="musicRecording/genre" class="genre"><%=related_item.genres[i]%></span>
+                                            <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>
                                         <% } %>
                                     <% } %>
                                     <br />
                                 <% } else { %>
-                                    <span itemprop="musicRecording/genre" class="genre"><%=related_item.genres%></span><br />
+                                    <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres%></span><br />
                                 <% } %>
                             <% } %>
         
@@ -48,14 +48,14 @@
                                     <% var numKeys = related_item.keys.length; %>
                                     <% for (var i=0; i<numKeys; i++) { %>
                                         <% if (i < (numKeys - 1)) { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>, 
+                                            <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>, 
                                         <% } else { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>
+                                            <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>
                                         <% } %>
                                     <% } %>
                                     <br />
                                 <% } else { %>
-                                    <span itemprop="musicRecording/key" class="key"><%=related_item.keys%></span><br />
+                                    <span itemprop="musicRecording/key" class="Key"><%=related_item.keys%></span><br />
                                 <% } %>
                             <% } %>
         
@@ -65,14 +65,14 @@
                                     <% var numTempos = related_item.tempos.length; %>
                                     <% for (var i=0; i<numTempos; i++) { %>
                                         <% if (i < (numTempos - 1)) { %>
-                                            <span itemprop="musicRecording/tempo" class="tempo"><%=related_item.tempos[i]%></span>, 
+                                            <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>, 
                                         <% } else { %>
-                                            <span itemprop="musicRecording/tempo" class="tempo"><%=related_item.tempos[i]%></span>
+                                            <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>
                                         <% } %>
                                     <% } %>
                                     <br />
                                 <% } else { %>
-                                    <span itemprop="musicRecording/tempo" class="tempo"><%=related_item.tempos%></span><br />
+                                    <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos%></span><br />
                                 <% } %>
                             <% } %>
         
@@ -82,7 +82,7 @@
 
                         </li>
                     <% }); %>
-                    </ol>
+                    </ul>
                 <% } else { %>
                     </span>
                     <div>No songs listed for <%=item.name%>.</div>

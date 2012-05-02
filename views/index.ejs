@@ -10,7 +10,7 @@
     <div>
       <a href="/artists/"><h2>List of Recording Artists</h2></a>
         <% if (items.length > 0) { %>
-            <ul>
+            <ul id="Artists">
             <% items.forEach(function(item) { %>
                 <li class="SpecificArtist" itemscope itemtype="http://schema.org/MusicGroup"><a itemprop="URL" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
             <% }); %>
