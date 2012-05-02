@@ -13,7 +13,7 @@
             <% if (items.length > 0) { %>
                 <ul>
                     <% items.forEach(function(item) { %>
-                        <span itemscope="http://schema.org/MusicRecording"><li><a itemprop="name" href="/songs/<%=item._id%>"><%=item.name%></a></li></span>
+                        <li itemscope itemtype="http://schema.org/MusicRecording"><a itemprop="URL" href="/songs/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a> <a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>" itemscope itemtype="http://schema.org/MusicGroup">(<span itemprop="name"><%=item.artistName%></span>)</a></li>
                     <% }); %>
                 </ul>
             <% } else { %>
