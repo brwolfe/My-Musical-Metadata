@@ -5,6 +5,11 @@
     </head>
   
     <body>
+
+        <div id="Navigation">
+            <p><a href="/">All the Musics</a> | <a href="/artists/">All Recording Artists</a> | <a href="/albums/">All Albums</a>
+        </div>
+
         <div itemscope itemtype="http://schema.org/MusicAlbum">
             <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
             <div>
