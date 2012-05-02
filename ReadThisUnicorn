@@ -2,6 +2,7 @@
 *SearchArtist* -- Applied to a form, used for templated query links leading to a resource of Artists.
 *SearchAlbumName* -- Applied to a form, used for templated query links leading to a resource of Albums.
 *SearchAlbumDate* -- Applied to a form, used for templated query links leading to a resource of Albums.
+*SearchSongName* -- Applied to a form, used for templated query links leading to a resource of Songs.
 *SearchSongGenre* -- Applied to a form, used for templated query links leading to a resource of Songs.
 *SearchSongKey* -- Applied to a form, used for templated query links leading to a resource of Songs.
 *SearchSongTempo* -- Applied to a form, used for templated query links leading to a resource of Songs.
