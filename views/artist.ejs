@@ -20,8 +20,8 @@
             <ul id="Albums">    
                 <% if (related_items.length > 0) { %>
                     <% related_items.forEach(function(related_item) { %>
-                        <li class="SpecificAlbum">
-                            <span itemprop="album" itemscope itemtype="MusicAlbum"><strong><a itemprop="name" rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                        <li class="SpecificAlbum" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
+                            <strong><a itemprop="URL" rel="Album" href="/albums/<%=related_item._id%>"><span itemprop="name"><%=related_item.name%></span></a></strong><br />
                                 <% if (related_item.datePublished !== undefined) { %>
                                     <span itemprop="datePublished"><%=related_item.datePublished%><br /></span>
                                 <% } %>
