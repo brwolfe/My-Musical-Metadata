@@ -31,7 +31,7 @@ app.get('/artists/',         // TODO: change to suit your URI design.
     var item_type = 'artist'; // TODO: change to the type of item you want.
 
     // Get all items of the specified type from the database.
-    db.getAll(item_type, function(err, items) {
+    db.getSome(item_type, req.query, function(err, items) {
 
       // If there was a database error, return an error status.
       if (err) { res.send(err, 500); } 
@@ -105,7 +105,7 @@ app.get('/albums/',         // TODO: change to suit your URI design.
     var item = req.body.item; //Get year info from search form, set as a variable to query db.
 
     // Get all items of the specified type from the database.
-    db.getSome(item_type, req.query.item, function(err, items) {
+    db.getSome(item_type, req.query, function(err, items) {
   
       // If there was a database error, return an error status.
       if (err) { res.send(err, 500); } 
@@ -125,28 +125,28 @@ app.get('/albums/',         // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // GET a list of albums by search criteria. ///////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/albums/?datePublished',         // TODO: change to suit your URI design. 
-  function(req, res) {
-
-    var item_type = 'album'; // TODO: change to the type of item you want.
-    var item = req.body.item; //Get year info from search form, set as a variable to query db.
-
+//app.get('/albums/?datePublished',         // TODO: change to suit your URI design. 
+//  function(req, res) {
+//
+//    var item_type = 'album'; // TODO: change to the type of item you want.
+//    var item = req.body.item; //Get year info from search form, set as a variable to query db.
+//
     // Get all items of the specified type from the database.
-    db.getSome(item_type, req.query.item, function(err, items) {
-  
+//    db.getSome(item_type, req.query.item, function(err, items) {
+//  
       // If there was a database error, return an error status.
-      if (err) { res.send(err, 500); } 
-
+//      if (err) { res.send(err, 500); } 
+//
       // Otherwise, use the returned data to render an HTML page.
-      else {
-        res.render(
-          'list-albums',   // TODO: change to the name of your HTML template.
-          { items: items, item: item }
-        );
-      }
-    });
-  }
-);
+//      else {
+//        res.render(
+//          'list-albums',   // TODO: change to the name of your HTML template.
+//          { items: items, item: item }
+//        );
+//      }
+//    });
+//  }
+//);
 
 
 
@@ -206,7 +206,7 @@ app.get('/songs/',         // TODO: change to suit your URI design.
     var item = req.body.item; //Get year info from search form, set as a variable to query db.
 
     // Get all items of the specified type from the database.
-    db.getSome(item_type, req.query.item, function(err, items) {
+    db.getSome(item_type, req.query, function(err, items) {
   
       // If there was a database error, return an error status.
       if (err) { res.send(err, 500); } 
