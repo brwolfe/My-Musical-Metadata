@@ -9,11 +9,17 @@
     <div itemscope="http://schema.org/MusicRecording">
     <h1 itemprop="name"><%=item.name%></h1>
 
-    <p>Artist:
-        <span itemprop="byArtist">
-            <%=item.artistName%>
-        </span>
+    <p itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup">Artist:
+        <a href="/artists/<%=item.byArtist%>" rel="artist" itemprop="URL">
+            <span itemprop="name"><%=item.artistName%></span>
+        </a>
     </p>            
+
+    <p itemprop="inAlbum" itemscope itemtype="http://www.schema.org/MusicAlbum">Album:
+        <a href="/albums/<%=item.inAlbum%>" rel="album" itemprop="URL">    
+            <span itemprop="name"><%=item.albumName%></span>
+        </a>
+    </p> 
 
     <% if (item.datePublished !== undefined) { %>
         <p>Date published: 
