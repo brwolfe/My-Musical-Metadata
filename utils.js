@@ -59,19 +59,14 @@ function connectToDatabase(name) {
           if (doc.type !== item_type ) { return false; }
           for (var prop in query) {
             if (prop in doc) {
-                console.log(prop);
-                console.log(query[prop]);
-                console.log(doc[prop]);
-                console.log("Yeah!");
-                if (typeof(doc[prop]) == 'object') {
-                    console.log("BAM");
-                }
               if (typeof(query[prop]) == 'string' && typeof(doc[prop]) !== 'object') {
                 if (doc[prop].toLowerCase().indexOf(query[prop].toLowerCase()) < 0) {
                   return false;
                 } 
               } else if (typeof(query[prop]) == 'string' && typeof(doc[prop]) == 'object') {
                   var props = doc[prop].length;
+                  console.log(prop);
+                  console.log(doc[prop]);
                   console.log(props);
                   var containsQuery = false;
                   for (var i=0; i<props; i++) {
@@ -82,7 +77,9 @@ function connectToDatabase(name) {
                   }
                   console.log(containsQuery);
                   console.log("I'll be better, I'll be better, doc, as soon as I am able");
-                  return false;
+                  if (containsQuery === false) {
+                      return false;
+                  }
               } else {
                 if (doc.doc[prop] !== query[prop]) {
                   return false;
