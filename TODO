@@ -2,8 +2,8 @@
 [DONE. for now we are ignoring playlists. song will be a resource type, and list of songs. views added for the new resource types.]
 
 - add / wrangle forms to add / update each resource type.
-[DONE: post for artists, albums.]
-[TO DO: put / update isn't working.]
+[DONE: post for artists, albums, songs.]
+[DONE: put / update.]
 
 - query forms
 [TO DO: this.]
@@ -32,6 +32,7 @@
 ["Your HTML representations must include the proper hypermedia controls for linking representations to one another, creating query URIs from templates, and updating resources both idempotently and non-idempotently. Your HTML controls must have appropriate id attribute values, class attribute values, name attribute values, and rel attribute values that describe their meaning and purpose (this was the work you did for the Designing a Hypermedia Type assignment)."]
 
 - add basic navigation
+[DONE]
 
 - add some basic CSS
 
