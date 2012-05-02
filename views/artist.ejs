@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-  <head>
-    <title>Albums by <%=item.name%></title>
-  </head>
+    <head>
+        <title>Albums by <%=item.name%></title>
+    </head>
 
-  <body>
-    <div itemscope="http://schema.org/MusicGroup">
-  <h1><span itemprop="name"><%=item.name%></span>'s Albums:</h1>
+    <body>
 
-    <% if (related_items.length > 0) { %>
-        <ul id="Albums">
-        <% related_items.forEach(function(related_item) { %>
-            <li class="SpecificAlbum">
-                <strong><span itemprop="album" itemscope itemtype="MusicAlbum"><a itemprop="name" rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
-
-                <% if (related_item.datePublished !== undefined) { %>
-                    <span itemprop="datePublished"><%=related_item.datePublished%><br /></span>
+        <div itemscope itemtype="http://schema.org/MusicGroup">
+            <h1><span itemprop="name"><%=item.name%></span>'s Albums:</h1>
+            <ul id="Albums">    
+                <% if (related_items.length > 0) { %>
+                    <% related_items.forEach(function(related_item) { %>
+                        <li class="SpecificAlbum">
+                            <span itemprop="album" itemscope itemtype="MusicAlbum"><strong><a itemprop="name" rel="Album" href="/albums/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                                <% if (related_item.datePublished !== undefined) { %>
+                                    <span itemprop="datePublished"><%=related_item.datePublished%><br /></span>
+                                <% } %>
+                            </span>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <div>No albums have been added for <%=item.name%>.</div>
                 <% } %>
-                
-            </li>
-        <% }); %>
-        </ul>
-    </span>
-    <% } else { %>
-        <div>No albums have been added for <%=item.name%>.</div>
-    <% } %>
-    </ul>
-    </div>
+            </ul>
+        </div>
 
-    <div>
-        <h2>Add an album for <%=item.name%></h2>
-        <form method="post" action="/albums/">
-            <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
-            <input type="hidden" name="item[artistName]" value="<%=item.name%>">
-            <label>Album name:
-                <input name="item[name]" type="text" required
-                    />
-            </label>
-            <label>Year published:
-                <input name="item[datePublished]" type="text"
-                    />
-            </label>
-            <button>Add</button>
-        </form>
-    </div>
+        <div>
+            <h2>Add an album for <%=item.name%></h2>
+            <form method="post" action="/albums/">
+                <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
+                <input type="hidden" name="item[artistName]" value="<%=item.name%>">
+                <label>Album name:
+                    <input name="item[name]" type="text" required="required" />
+                </label>
+                <label>Year published:
+                    <input name="item[datePublished]" type="text" />
+                </label>
+                <button>Add</button>
+            </form>
+        </div>
     
-    <div>
-        <h2>Update info for <%=item.name%></h2>
-        <form method="put" action="/artists/<%=item._id%>">
-            <label>Artist name:
-                <input name="item[name]" type="text" required
-                    placeholder="<%=item.name%>" />
-            </label>
-        <button>Update</button>
-        </form>
-    </div>
-  </body>
-
+        <div>
+            <h2>Update info for <%=item.name%></h2>
+            <form method="put" action="/artists/<%=item._id%>">
+                <label>Artist name:
+                    <input name="item[name]" type="text" required="required"
+                        placeholder="<%=item.name%>" />
+                </label>
+                <button>Update</button>
+            </form>
+        </div>
+    </body>
 </html>
