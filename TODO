@@ -17,12 +17,13 @@
 [TO DO: make queries work...]
 
 - add microdata (within all views)
+[dbs is working on this.]
     Album.ejs - DONE(?)
     Artist.ejs - DONE(?)
-    index.ejs - DONE - TESTED
-    list-albums.ejs - DONE - TESTED
-    list-artists.ejs - DONE - TESTED
-    list-songs.ejs
+    index.ejs - DONE(?)
+    list-albums.ejs - DONE
+    list-artists.ejs - DONE
+    list-songs.ejs - DONE
     playlist.ejs
     Playlists.ejs
     song.ejs - DONE(?)

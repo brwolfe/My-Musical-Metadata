@@ -12,7 +12,7 @@
                     <ol id="Songs">
                     <% related_items.forEach(function(related_item) { %>
                         <li class="Song">
-                        <strong><span itemprop="track" itemscope itemtype="MusicTrack"><a itemprop="name" rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                        <strong><span itemprop="track" itemscope itemtype="MusicRecording"><a itemprop="name" rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
         
                         <% if (related_item.trackNumber !== undefined) { %>
                             Track <%=related_item.trackNumber%><br />
@@ -82,23 +82,7 @@
                     <div>No songs listed for <%=item.name%>.</div>
                 <% } %>
             </div>
-
-<div>
-<h2>Update info for <%=item.name%></h2>
-            <form method="post" action="/albums/<%=item._id%>">
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-        <label>Name: 
-          <input name="item[name]" value="<%=item.name%>" type="text" required>
- <input type="hidden" name="item[datePublished]" value="<%=item.datePublished%>">
-                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
-                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
-        </label>
-        <button>Update</button>
-      </form>
-</div>
-
-
+  
             <div>
                 <h2>Add a song to <%=item.name%></h2>
                 <form method="post" action="/songs/" id="addSong">
@@ -116,7 +100,7 @@
                     <label>Genre(s):
                         <select name="item[genres]" multiple>
                             <option value="Disco">Disco</option>
-              	            <option value="Pop">Pop</option>
+          		            <option value="Pop">Pop</option>
                         	<option value="Scandinavian">Scandinavian</option>
                          	<option value="Comedy">Comedy</option>
                     		<option value="Polka">Polka</option>
