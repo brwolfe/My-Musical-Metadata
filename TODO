@@ -1,3 +1,15 @@
+- Make search work on multi-value fields
+- ReadMe
+- Check that all divs containing search forms have <id="Search">
+- Check that the "SubmitButton" name attribute is on all form attributes
+- Add <name="item[inAlbum, etc.]" to names list
+- Add Search Artist by Name [DONE]
+
+
+
+
+- Basic CSS - [DONE]
+
 - discuss resource types. should songs be a type? tracks? are they the same type or different?
 [DONE. for now we are ignoring playlists. song will be a resource type, and list of songs. views added for the new resource types.]
 
@@ -28,10 +40,10 @@
     Playlists.ejs
     song.ejs - DONE - TESTED
 
-- make sure everything has the appropriate classes etc
+- make sure everything has the appropriate classes etc  DONE
 ["Your HTML representations must include the proper hypermedia controls for linking representations to one another, creating query URIs from templates, and updating resources both idempotently and non-idempotently. Your HTML controls must have appropriate id attribute values, class attribute values, name attribute values, and rel attribute values that describe their meaning and purpose (this was the work you did for the Designing a Hypermedia Type assignment)."]
 
-- add basic navigation
+- add basic navigation  DONE
 
 - add some basic CSS
 
