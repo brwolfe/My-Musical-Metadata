@@ -2,7 +2,7 @@
 [DONE.]
 - Search by name for each resource type [DONE.]
 - Check that all divs containing search forms have <id="Search"> [DONE.]
-- Check that the "SubmitButton" name attribute is on all form attributes [DONE for search, not yet done for post or put]
+- Check that the "SubmitButton" name attribute is on all form attributes [DONE.]
 - Add <name="item[inAlbum, etc.]" to names list
 - Deploy this thing
 
