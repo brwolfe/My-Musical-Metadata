@@ -10,7 +10,7 @@
     <% if (items.length > 0) { %>
     <ul>
       <% items.forEach(function(item) { %>
-      <li itemscope="http://schema.org/MusicGroup"><a itemprop="URL" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
+      <li itemscope itemtype="http://schema.org/MusicGroup"><a itemprop="URL" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
       <% }); %>
     </ul>
     <% } else { %>
