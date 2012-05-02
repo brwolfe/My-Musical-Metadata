@@ -18,8 +18,8 @@
 
 - add microdata (within all views)
 [dbs is working on this.]
-    Album.ejs
-    Artist.ejs
+    Album.ejs - DONE(?)
+    Artist.ejs - DONE(?)
     index.ejs - DONE(?)
     list-albums.ejs
     list-artists.ejs
