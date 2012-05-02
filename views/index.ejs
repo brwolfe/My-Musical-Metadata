@@ -33,14 +33,13 @@
 
     <form id="SearchAlbum" action="/albums/" method="get">
     Search Albums By Year: 
-	<select>
-	</select>
+	<input name="datePublished" />
 	<input type="submit" value="Submit" name="SubmitButton" />
     </form>
 
     <form id="SearchSongGenre" action="/songs/" method="get">
     Search Songs By Genre: 
-	<select>
+	<select name="keys">
   		<option value="Disco">Disco</option>
   		<option value="Pop">Pop</option>
   		<option value="Scandinavian">Scandinavian</option>
@@ -58,7 +57,7 @@
 
     <form id="SearchSongKey" action="/songs/" method="get">
     Search Songs By Key (Enharmonic Equivalents Not Listed): 
-	<select>
+	<select name="keys">
         <option value="A">A Maj.</option>
         <option value="a">a min.</option>
       	<option value="G#">A&#9837; Maj.</option>
@@ -89,7 +88,7 @@
 
     <form id="SearchSongTempo" action="/songs/" method="get">
     Search Songs By Tempo: 
-	<select>
+	<select name="tempos">
         <option value="larghissimo">Larghissimo</option>
         <option value="grave">Grave</option>
         <option value="lento">Lento</option>
