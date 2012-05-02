@@ -10,16 +10,16 @@
     <% if (items.length > 0) { %>
     <ul>
       <% items.forEach(function(item) { %>
-      <span itemscope="http://schema.org/MusicAlbum"><li><a itemprop="name" href="/albums/<%=item._id%>"><%=item.name%></a></li></span>
+      <span itemscope="http://schema.org/MusicAlbum"><li><a itemprop="name" href="/albums/<%=item._id%>"><%=item.name%></a> <a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>" itemscope itemtype="http://schema.org/MusicGroup"><span itemprop="name">(<%=item.artistName%>)</span></a></li></span>
       <% }); %>
     </ul>
     <% } else { %>
     <div>No albums have been added.</div>
     <% } %>
 
-      <h2>Search for albums by name</h2>
+      <h2>Search for albums by year</h2>
       <form method="get" action="/albums/">
-        <label>Album name: <input name="name"></label>
+        <label>Album year: <input name="datePublished"></label>
         <button>Search</button>
       </form>
 
