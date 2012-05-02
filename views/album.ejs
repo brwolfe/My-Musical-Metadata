@@ -6,74 +6,75 @@
   
     <body>
         <div itemscope itemtype="http://schema.org/MusicAlbum">
-            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></h1></span>
+            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
             <div>
                 <% if (related_items.length > 0) { %>
                     <ol id="Songs">
                     <% related_items.forEach(function(related_item) { %>
-                        <li class="Song">
-                        <strong><span itemprop="track" itemscope itemtype="MusicTrack"><a itemprop="name" rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                        <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+                            <strong><a itemprop="URL" rel="Song" href="/songs/<%=related_item._id%>">
+                                <span itemprop="name"><%=related_item.name%></span>
+                            </a></strong><br />
         
-                        <% if (related_item.trackNumber !== undefined) { %>
-                            Track <%=related_item.trackNumber%><br />
-                        <% } %>
-        
-                        <% if (related_item.genres !== undefined) { %>
-                            Genres:
-                            <% if (related_item.genres instanceof Array) { %>
-                                <% var numGenres = related_item.genres.length; %>
-                                <% for (var i=0; i<numGenres; i++) { %>
-                                    <% if (i < (numGenres - 1)) { %>
-                                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>, 
-                                    <% } else { %>
-                                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
+                            <% if (related_item.trackNumber !== undefined) { %>
+                                Track <%=related_item.trackNumber%><br />
+                            <% } %>
+            
+                            <% if (related_item.genres !== undefined) { %>
+                                Genres:
+                                <% if (related_item.genres instanceof Array) { %>
+                                    <% var numGenres = related_item.genres.length; %>
+                                    <% for (var i=0; i<numGenres; i++) { %>
+                                        <% if (i < (numGenres - 1)) { %>
+                                            <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>, 
+                                        <% } else { %>
+                                            <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
+                                        <% } %>
+                                    <br />
+                                    <% } %>
+                                <% } else { %>
+                                    <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
                                 <% } %>
-                            <br />
                             <% } %>
-                            <% } else { %>
-                                <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
-                            <% } %>
-                        <% } %>
         
-                        <% if (related_item.keys !== undefined) { %>
-                            Key:
+                            <% if (related_item.keys !== undefined) { %>
+                                Key:
                                 <% if (related_item.keys instanceof Array) { %>
                                     <% var numKeys = related_item.keys.length; %>
                                     <% for (var i=0; i<numKeys; i++) { %>
                                         <% if (i < (numKeys - 1)) { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>, 
+                                            <span itemprop="key" class="key"><%=related_item.keys[i]%></span>, 
                                         <% } else { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>
+                                            <span itemprop="key" class="key"><%=related_item.keys[i]%></span>
                                         <% } %>
-                                <br />
+                                    <br />
                                     <% } %>
                                 <% } else { %>
-                                    <span class="musicRecording/key"><%=related_item.keys%></span><br />
+                                    <span itemprop="key" class="key"><%=related_item.keys%></span><br />
                                 <% } %>
-                        <% } %>
+                            <% } %>
         
-                        <% if (related_item.tempos !== undefined) { %>
-                            Tempo:
+                            <% if (related_item.tempos !== undefined) { %>
+                                Tempo:
                                 <% if (related_item.tempos instanceof Array) { %>
                                     <% var numTempos = related_item.tempos.length; %>
                                     <% for (var i=0; i<numTempos; i++) { %>
                                         <% if (i < (numTempos - 1)) { %>
-                                            <span class="musicRecording/tempo"><%=related_item.tempos[i]%></span>, 
+                                            <span itemprop="tempo" class="tempo"><%=related_item.tempos[i]%></span>, 
                                         <% } else { %>
-                                            <span class="musicRecording/tempo"><%=related_item.tempos[i]%></span>
+                                            <span itemprop="tempo" class="tempo"><%=related_item.tempos[i]%></span>
                                         <% } %>
-                                <br />
+                                    <br />
                                     <% } %>
                                 <% } else { %>
-                                    <span class="tempo"><%=related_item.tempos%></span><br />
+                                    <span itemprop="tempo" class="tempo"><%=related_item.tempos%></span><br />
                                 <% } %>
-                        <% } %>
-        
-                        <span itemprop="duration">
-                            <% if (related_item.duration !== undefined) { %>
-                                <%=related_item.duration%><br />
                             <% } %>
-                        </span>
+        
+                            <% if (related_item.duration !== undefined) { %>
+                                <span itemprop="duration"><%=related_item.duration%></span><br />
+                            <% } %>
+
                         </li>
                     <% }); %>
                     </ol>
