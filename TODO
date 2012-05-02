@@ -18,7 +18,7 @@
 
 - add microdata (within all views)
     Album.ejs - DONE - TESTED
-    Artist.ejs - DONE(?)
+    Artist.ejs - DONE - TESTED
     index.ejs - DONE - TESTED
     list-albums.ejs - DONE - TESTED
     list-artists.ejs - DONE - TESTED
