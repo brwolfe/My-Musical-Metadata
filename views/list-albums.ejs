@@ -9,16 +9,17 @@
             <p><a href="/">All the Musics</a> | <a href="/artists/">All Recording Artists</a> | <a href="/albums/">All Albums</a>
         </div>
 
-    <h1>Albums</h1>
-    <% if (items.length > 0) { %>
-    <ul>
-      <% items.forEach(function(item) { %>
-      <li itemscope itemtype="http://schema.org/MusicAlbum"><a itemprop="URL" href="/albums/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a> <a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>" itemscope itemtype="http://schema.org/MusicGroup">(<span itemprop="name"><%=item.artistName%></span>)</a></li>
-      <% }); %>
-    </ul>
+        <h1>Albums</h1>
+        <% if (items.length > 0) { %>
+            <ul>
+                <% items.forEach(function(item) { %>
+                <li itemscope itemtype="http://schema.org/MusicAlbum"><a itemprop="URL" href="/albums/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a> <a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>" itemscope itemtype="http://schema.org/MusicGroup">(<span itemprop="name"><%=item.artistName%></span>)</a></li>
+            </ul>
+        <% }); %>
     <% } else { %>
-    <div>No albums have been added.</div>
+        <div>No albums have been added.</div>
     <% } %>
+
         <h2>Search for albums by year</h2>
         <form method="get" id="SearchAlbum" action="/albums/">
             <label>Album year: <input name="datePublished"></label>

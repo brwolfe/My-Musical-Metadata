@@ -5,17 +5,11 @@
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
- <a href="/"><h1>All the Musics</h1></a>
+        <div id="Navigation">
+            <p><a href="/">All the Musics</a> | <a href="/artists/">All Recording Artists</a> | <a href="/albums/">All Albums</a>
+        </div>
 
-    <div>
-      <a href="/artists/"><h2>All Recording Artists</h2></a>
-        
-    <div>
-        <a href="/albums/"><h2>All Albums</h2></a>
-            
-    </div>
-
-        <a href="/"><h1>Songs</h1></a>
+        <h1>Songs</h1>
             <% if (items.length > 0) { %>
                 <ul>
                     <% items.forEach(function(item) { %>
