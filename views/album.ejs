@@ -1,79 +1,89 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>BrandCramp: <%=item.name%></title>
     </head>
   
     <body>
+    <a href="/"><h1>All the Musics</h1></a>
+
+    <div>
+      <a href="/artists/"><h2>All Recording Artists</h2></a>
+        
+    <div>
+        <a href="/albums/"><h2>All Albums</h2></a>
+            
+    </div>
+
         <div itemscope itemtype="http://schema.org/MusicAlbum">
-            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></h1></span>
+            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
             <div>
                 <% if (related_items.length > 0) { %>
                     <ol id="Songs">
                     <% related_items.forEach(function(related_item) { %>
-                        <li class="Song">
-                        <strong><span itemprop="track" itemscope itemtype="MusicRecording"><a itemprop="name" rel="Song" href="/songs/<%=related_item._id%>"><%=related_item.name%></a></strong><br />
+                        <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+                            <strong><a itemprop="URL" rel="Song" href="/songs/<%=related_item._id%>">
+                                <span itemprop="name"><%=related_item.name%></span>
+                            </a></strong><br />
         
-                        <% if (related_item.trackNumber !== undefined) { %>
-                            Track <%=related_item.trackNumber%><br />
-                        <% } %>
-        
-                        <% if (related_item.genres !== undefined) { %>
-                            Genres:
-                            <% if (related_item.genres instanceof Array) { %>
-                                <% var numGenres = related_item.genres.length; %>
-                                <% for (var i=0; i<numGenres; i++) { %>
-                                    <% if (i < (numGenres - 1)) { %>
-                                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>, 
-                                    <% } else { %>
-                                        <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
+                            <% if (related_item.trackNumber !== undefined) { %>
+                                Track <%=related_item.trackNumber%><br />
+                            <% } %>
+            
+                            <% if (related_item.genres !== undefined) { %>
+                                Genres:
+                                <% if (related_item.genres instanceof Array) { %>
+                                    <% var numGenres = related_item.genres.length; %>
+                                    <% for (var i=0; i<numGenres; i++) { %>
+                                        <% if (i < (numGenres - 1)) { %>
+                                            <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>, 
+                                        <% } else { %>
+                                            <span itemprop="genre" class="genre"><%=related_item.genres[i]%></span>
+                                        <% } %>
+                                    <br />
+                                    <% } %>
+                                <% } else { %>
+                                    <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
                                 <% } %>
-                            <br />
                             <% } %>
-                            <% } else { %>
-                                <span itemprop="genre" class="genre"><%=related_item.genres%></span><br />
-                            <% } %>
-                        <% } %>
         
-                        <% if (related_item.keys !== undefined) { %>
-                            Key:
+                            <% if (related_item.keys !== undefined) { %>
+                                Key:
                                 <% if (related_item.keys instanceof Array) { %>
                                     <% var numKeys = related_item.keys.length; %>
                                     <% for (var i=0; i<numKeys; i++) { %>
                                         <% if (i < (numKeys - 1)) { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>, 
+                                            <span itemprop="key" class="key"><%=related_item.keys[i]%></span>, 
                                         <% } else { %>
-                                            <span itemprop="musicRecording/key" class="key"><%=related_item.keys[i]%></span>
+                                            <span itemprop="key" class="key"><%=related_item.keys[i]%></span>
                                         <% } %>
-                                <br />
+                                    <br />
                                     <% } %>
                                 <% } else { %>
-                                    <span class="musicRecording/key"><%=related_item.keys%></span><br />
+                                    <span itemprop="key" class="key"><%=related_item.keys%></span><br />
                                 <% } %>
-                        <% } %>
+                            <% } %>
         
-                        <% if (related_item.tempos !== undefined) { %>
-                            Tempo:
+                            <% if (related_item.tempos !== undefined) { %>
+                                Tempo:
                                 <% if (related_item.tempos instanceof Array) { %>
                                     <% var numTempos = related_item.tempos.length; %>
                                     <% for (var i=0; i<numTempos; i++) { %>
                                         <% if (i < (numTempos - 1)) { %>
-                                            <span class="musicRecording/tempo"><%=related_item.tempos[i]%></span>, 
+                                            <span itemprop="tempo" class="tempo"><%=related_item.tempos[i]%></span>, 
                                         <% } else { %>
-                                            <span class="musicRecording/tempo"><%=related_item.tempos[i]%></span>
+                                            <span itemprop="tempo" class="tempo"><%=related_item.tempos[i]%></span>
                                         <% } %>
-                                <br />
+                                    <br />
                                     <% } %>
                                 <% } else { %>
-                                    <span class="tempo"><%=related_item.tempos%></span><br />
+                                    <span itemprop="tempo" class="tempo"><%=related_item.tempos%></span><br />
                                 <% } %>
-                        <% } %>
-        
-                        <span itemprop="duration">
-                            <% if (related_item.duration !== undefined) { %>
-                                <%=related_item.duration%><br />
                             <% } %>
-                        </span>
+        
+                            <% if (related_item.duration !== undefined) { %>
+                                <span itemprop="duration"><%=related_item.duration%></span><br />
+                            <% } %>
+
                         </li>
                     <% }); %>
                     </ol>
@@ -82,7 +92,23 @@
                     <div>No songs listed for <%=item.name%>.</div>
                 <% } %>
             </div>
-  
+
+<div>
+<h2>Update info for <%=item.name%></h2>
+            <form method="post" action="/albums/<%=item._id%>">
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+        <label>Name: 
+          <input name="item[name]" value="<%=item.name%>" type="text" required>
+ <input type="hidden" name="item[datePublished]" value="<%=item.datePublished%>">
+                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
+                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+        </label>
+        <button>Update</button>
+      </form>
+</div>
+
+
             <div>
                 <h2>Add a song to <%=item.name%></h2>
                 <form method="post" action="/songs/" id="addSong">
@@ -100,7 +126,7 @@
                     <label>Genre(s):
                         <select name="item[genres]" multiple>
                             <option value="Disco">Disco</option>
-          		            <option value="Pop">Pop</option>
+                              <option value="Pop">Pop</option>
                         	<option value="Scandinavian">Scandinavian</option>
                          	<option value="Comedy">Comedy</option>
                     		<option value="Polka">Polka</option>
