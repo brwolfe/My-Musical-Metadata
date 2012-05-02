@@ -45,14 +45,14 @@
                 <% var numTempos = item.tempos.length; %>
                 <% for (var i=0; i<numTempos; i++) { %>
                     <% if (i < (numTempos - 1)) { %>
-                        <span class="tempo" itemprop="tempo"><%=item.tempos[i]%></span>, 
+                        <span class="tempo" itemprop="musicRecording/tempo"><%=item.tempos[i]%></span>, 
                     <% } else { %>
-                        <span class="tempo" itemprop="tempo"><%=item.tempos[i]%></span>
+                        <span class="tempo" itemprop="musicRecording/tempo"><%=item.tempos[i]%></span>
                     <% } %>
                     <br />
                 <% } %>
             <% } else { %>
-                <span class="tempo" itemprop="tempo"><%=item.tempos%></span><br />
+                <span class="tempo" itemprop="musicRecording/tempo"><%=item.tempos%></span><br />
             <% } %>
         </p>
     <% } %>
@@ -64,14 +64,14 @@
                 <% var numKeys = item.keys.length; %>
                 <% for (var i=0; i<numKeys; i++) { %>
                     <% if (i < (numKeys - 1)) { %>
-                        <span class="key" itemprop="key"><%=item.keys[i]%></span>, 
+                        <span class="key" itemprop="musicRecording/key"><%=item.keys[i]%></span>, 
                     <% } else { %>
-                        <span class="key" itemprop="key"><%=item.keys[i]%></span>
+                        <span class="key" itemprop="musicRecording/key"><%=item.keys[i]%></span>
                     <% } %>
                     <br />
                 <% } %>
             <% } else { %>
-                <span class="key" itemprop="key"><%=item.keys%></span><br />
+                <span class="key" itemprop="musicRecording/key"><%=item.keys%></span><br />
             <% } %>
         </p>
     <% } %>
