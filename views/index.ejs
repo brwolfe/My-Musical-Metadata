@@ -6,7 +6,12 @@
   </head>
 
   <body>
-    <a href="/"><h1>All the Musics</h1></a>
+  
+    <div id="Navigation">
+        <p>All the Musics | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
+    </div>
+    
+    <h1>All the Musics</h1>
 
     <div>
       <a href="/artists/"><h2>List of Recording Artists</h2></a>
@@ -35,7 +40,7 @@
     <form id="SearchAlbum" action="/albums/" method="get">
     Search Albums By Year: 
 	<input name="datePublished" />
-	<input type="submit" value="Submit" name="SubmitButton" />
+	<input type="submit" value="Search" name="SubmitButton" />
     </form>
 
     <form id="SearchSongGenre" action="/songs/" method="get">
@@ -53,7 +58,7 @@
   		<option value="Avant-garde">Avant-garde</option>
   		<option value="Experimental">Experimental</option>
 	</select>
-	<input type="submit" value="Submit" name="SubmitButton" />
+	<input type="submit" value="Search" name="SubmitButton" />
     </form>
 
     <form id="SearchSongKey" action="/songs/" method="get">
@@ -84,7 +89,7 @@
         <option value="g">g min.</option>
         <option value="g#">g# min.</option>
 	</select>
-	<input type="submit" value="Submit" name="SubmitButton" />
+	<input type="submit" value="Search" name="SubmitButton" />
     </form>
 
     <form id="SearchSongTempo" action="/songs/" method="get">
@@ -102,7 +107,7 @@
         <option value="presto">Presto</option>
     	<option value="prestissimo">Prestissimo</option>
     </select>
-	<input type="submit" value="Submit" name="SubmitButton" />
+	<input type="submit" value="Search" name="SubmitButton" />
     </form>
     
     </div>
