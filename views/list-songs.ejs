@@ -1,4 +1,3 @@
-<!-- we need to update this with properties / values for the tags. should probably use whatever is used here (Artist?g=Tropicalia.html), but that file isn't working on github... -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,96 +6,86 @@
     </head>
     <body>
         <a href="/"><h1>Songs</h1></a>
-        <% if (items.length > 0) { %>
-            <ul>
-                <% items.forEach(function(item) { %>
-                <span itemscope="http://schema.org/MusicRecording"><li><a itemprop="name" href="/songs/<%=item._id%>"><%=item.name%></a></li></span>
-                <% }); %>
-            </ul>
-        <% } else { %>
-            <div>No songs found.</div>
-        <% } %>
+            <% if (items.length > 0) { %>
+                <ul>
+                    <% items.forEach(function(item) { %>
+                        <span itemscope="http://schema.org/MusicRecording"><li><a itemprop="name" href="/songs/<%=item._id%>"><%=item.name%></a></li></span>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <div>No songs found.</div>
+            <% } %>
+
+
         <div class="control">
             <h2>Search for songs</h2>
-    <form id="SearchSongGenre" action="/songs/" method="get">
-    By Genre: 
-    <select>
-  		<option value="Disco">Disco</option>
-  		<option value="Pop">Pop</option>
-  		<option value="Scandinavian">Scandinavian</option>
-  		<option value="Comedy">Comedy</option>
-  		<option value="Polka">Polka</option>
-  		<option value="Metal">Metal</option>
-  		<option value="Jazz">Jazz</option>
-  		<option value="Tropicalia">Tropicalia</option>
-  		<option value="Lounge">Lounge</option>
-  		<option value="Avant-garde">Avant-garde</option>
-  		<option value="Experimental">Experimental</option>
-	</select>
-	<input type="submit" value="Submit" name="SubmitButton" />
-    </form>
+            <form id="SearchSongGenre" action="/songs/" method="get">
+            By Genre: 
+                <select>
+              		<option value="Disco">Disco</option>
+              		<option value="Pop">Pop</option>
+              		<option value="Scandinavian">Scandinavian</option>
+              		<option value="Comedy">Comedy</option>
+              		<option value="Polka">Polka</option>
+              		<option value="Metal">Metal</option>
+              		<option value="Jazz">Jazz</option>
+              		<option value="Tropicalia">Tropicalia</option>
+              		<option value="Lounge">Lounge</option>
+              		<option value="Avant-garde">Avant-garde</option>
+              		<option value="Experimental">Experimental</option>
+            	</select>
+            	<input type="submit" value="Submit" name="SubmitButton" />
+            </form>
 
-    <form id="SearchSongKey" action="/songs/" method="get">
-    By Key (Enharmonic Equivalents Not Listed): 
-	<select>
-        <option value="A">A Maj.</option>
-        <option value="a">a min.</option>
-      	<option value="G#">A&#9837; Maj.</option>
-        <option value="B">B Maj.</option>
-        <option value="b">b min.</option>
-        <option value="A#">B&#9837; Maj.</option>
-        <option value="a#">b&#9837; min.</option>
-  		<option value="C">C Maj.</option>
-        <option value="c">c min.</option>
-        <option value="c#">c# min.</option>
-  		<option value="D">D Maj.</option>
-        <option value="C#">D&#9837; Maj.</option>
-        <option value="d">d min.</option>
-        <option value="d#">d# min.</option>
-      	<option value="D#">E&#9837; Maj.</option>
-  		<option value="E">E Maj.</option>
-        <option value="e">e min.</option>
-  		<option value="F">F Maj.</option>
-        <option value="f">f min.</option>
-        <option value="F#">F# Maj.</option>
-        <option value="f#">f# min.</option>
-        <option value="G">G Maj.</option>
-        <option value="g">g min.</option>
-        <option value="g#">g# min.</option>
-	</select>
-	<input type="submit" value="Submit" name="SubmitButton" />
-    </form>
+            <form id="SearchSongKey" action="/songs/" method="get">
+            By Key (Enharmonic Equivalents Not Listed): 
+            	<select>
+                    <option value="A">A Maj.</option>
+                    <option value="a">a min.</option>
+                  	<option value="G#">A&#9837; Maj.</option>
+                    <option value="B">B Maj.</option>
+                    <option value="b">b min.</option>
+                    <option value="A#">B&#9837; Maj.</option>
+                    <option value="a#">b&#9837; min.</option>
+              		<option value="C">C Maj.</option>
+                    <option value="c">c min.</option>
+                    <option value="c#">c# min.</option>
+              		<option value="D">D Maj.</option>
+                    <option value="C#">D&#9837; Maj.</option>
+                    <option value="d">d min.</option>
+                    <option value="d#">d# min.</option>
+                  	<option value="D#">E&#9837; Maj.</option>
+              		<option value="E">E Maj.</option>
+                    <option value="e">e min.</option>
+              		<option value="F">F Maj.</option>
+                    <option value="f">f min.</option>
+                    <option value="F#">F# Maj.</option>
+                    <option value="f#">f# min.</option>
+                    <option value="G">G Maj.</option>
+                    <option value="g">g min.</option>
+                    <option value="g#">g# min.</option>
+            	</select>
+            	<input type="submit" value="Submit" name="SubmitButton" />
+            </form>
 
-    <form id="SearchSongTempo" action="/songs/" method="get">
-    By Tempo: 
-	<input type="text" name="TempoBox" />
-	<select>
-        <option value="larghissimo">Larghissimo</option>
-        <option value="grave">Grave</option>
-        <option value="lento">Lento</option>
-        <option value="larghetto">Larghetto</option>
-        <option value="adagio">Adagio</option>
-        <option value="andante">Andante</option>
-        <option value="moderato">Moderato</option>
-        <option value="allegretto">Allegretto</option>
-        <option value="allegro">Allegro</option>
-        <option value="presto">Presto</option>
-    	<option value="prestissimo">Prestissimo</option>
-    </select>
-    </form>
-                    
-        <button>Search</button>
-      </form>
-    </div>
-    <div>
-        <h2>Add a new song</h2>
-        <form method="post" action="/artists/">
-            <label>Song name:
-                <input name="item[name]" type="text" required
-                    />
-            </label>
-            <button>Add</button>
-        </form>
-    </div>
-  </body>
+            <form id="SearchSongTempo" action="/songs/" method="get">
+            By Tempo: 
+	            <input type="text" name="TempoBox" />
+            	<select>
+                    <option value="larghissimo">Larghissimo</option>
+                    <option value="grave">Grave</option>
+                    <option value="lento">Lento</option>
+                    <option value="larghetto">Larghetto</option>
+                    <option value="adagio">Adagio</option>
+                    <option value="andante">Andante</option>
+                    <option value="moderato">Moderato</option>
+                    <option value="allegretto">Allegretto</option>
+                    <option value="allegro">Allegro</option>
+                    <option value="presto">Presto</option>
+                	<option value="prestissimo">Prestissimo</option>
+                </select>
+            </form>
+            <button>Search</button>
+        </div>
+    </body>
 </html>

@@ -39,6 +39,17 @@
             </form>
         </div>
     
+    <div>
+            <h2>Update info for <%=item.name%></h2>
+            <form method="post" action="/artists/<%=item._id%>">
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+        <label>Name: 
+          <input name="item[name]" value="<%=item.name%>" type="text" required>
+        </label>
+        <button>Update</button>
+      </form>
+        </div>
     
     </body>
 </html>
