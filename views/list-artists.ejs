@@ -20,11 +20,13 @@
     <% } else { %>
     <div>No artists found.</div>
     <% } %>
-    <div class="control">
-      <h2>Search for artists by name</h2>
+    
+
+<div id="Search">
       <form method="get" id="SearchArtist" action="/artists/">
-        <label>Artist name: <input name="name"></label>
-        <button>Search</button>
+        Search Artists by Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
       </form>
     </div>
     <div>

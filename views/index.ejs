@@ -36,8 +36,19 @@
     </div>
 
  <div id="Search">
+ <form method="get" id="SearchArtist" action="/artists/">
+        Search Artists by Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
+      </form>
 
-    <form id="SearchAlbum" action="/albums/" method="get">
+      <form method="get" id="SearchAlbumName" action="/albums/">
+        Search Albums by Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
+      </form>
+   
+    <form id="SearchAlbumDate" action="/albums/" method="get">
     Search Albums By Year: 
 	<input name="datePublished" />
 	<input type="submit" value="Search" name="SubmitButton" />

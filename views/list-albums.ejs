@@ -20,10 +20,19 @@
             <div>No albums have been added.</div>
         <% } %>
 
-        <h2>Search for albums by year</h2>
-        <form method="get" id="SearchAlbum" action="/albums/">
-            <label>Album year: <input name="datePublished"></label>
-            <button>Search</button>
-        </form>
+
+<div id="Search">
+      <form method="get" id="SearchAlbumName" action="/albums/">
+        Search Albums by Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
+      </form>
+   
+    <form id="SearchAlbumDate" action="/albums/" method="get">
+    Search Albums By Year: 
+    <input name="datePublished" />
+	<input type="submit" value="Search" name="SubmitButton" />
+    </form>
+ </div>
     </body>
 </html>

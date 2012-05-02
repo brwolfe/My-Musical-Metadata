@@ -1,6 +1,7 @@
 **ID attribute values**
 *SearchArtist* -- Applied to a form, used for templated query links leading to a resource of Artists.
-*SearchAlbum* -- Applied to a form, used for templated query links leading to a resource of Albums.
+*SearchAlbumName* -- Applied to a form, used for templated query links leading to a resource of Albums.
+*SearchAlbumDate* -- Applied to a form, used for templated query links leading to a resource of Albums.
 *SearchSongGenre* -- Applied to a form, used for templated query links leading to a resource of Songs.
 *SearchSongKey* -- Applied to a form, used for templated query links leading to a resource of Songs.
 *SearchSongTempo* -- Applied to a form, used for templated query links leading to a resource of Songs.
