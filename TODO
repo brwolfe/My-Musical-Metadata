@@ -17,7 +17,7 @@
 [TO DO: make queries work...]
 
 - add microdata (within all views)
-    Album.ejs - DONE(?)
+    Album.ejs - DONE - TESTED
     Artist.ejs - DONE(?)
     index.ejs - DONE - TESTED
     list-albums.ejs - DONE - TESTED
