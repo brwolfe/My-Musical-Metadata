@@ -30,7 +30,7 @@
     list-songs.ejs - DONE
     playlist.ejs
     Playlists.ejs
-    song.ejs - DONE(?)
+    song.ejs - DONE - TESTED
 
 - make sure everything has the appropriate classes etc
 ["Your HTML representations must include the proper hypermedia controls for linking representations to one another, creating query URIs from templates, and updating resources both idempotently and non-idempotently. Your HTML controls must have appropriate id attribute values, class attribute values, name attribute values, and rel attribute values that describe their meaning and purpose (this was the work you did for the Designing a Hypermedia Type assignment)."]
