@@ -16,6 +16,8 @@
 *NewAlbum* -- Applied to a *<form>*, used to template the URI for creating a new Album resource using POST.
 *NewAlbumValue* -- Applied to a *<form>*, used to template the URI for updating an Album resource using PUT.
 *Search* -- Applied to a *<div>*, used for identifying the section of the representation that houses the forms used for templated query links.
+*update* -- Applied to a div that contains the form to update the current resource.
+*add* -- Applied to a div that contains the form to add a child resource to the current resource.
 
 **Class attribute values**
 *SpecificArtist* -- Applied to a *<li>*, used to identify an Artist.
@@ -28,6 +30,8 @@
 **Name attribute values**
 *SubmitButton* -- Applied to an *<input>* element, used to identify a submit button.
 *tempos* -- Applied to an *<menu>* element used to input a Tempo.
+*name, datePublished, keys, tempos, genres* -- Applied to a search form input or select that should search by the relevant property of the item.
+*item[prop]* -- for any given prop; applied to a form field, identifies the property that should be assigned to the item via the value of that field.
 
 **Rel attribute values**
 *album* -- Used on an *<a>* element, describing the linked resource as the Albums by Artist representation.

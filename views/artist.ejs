@@ -10,6 +10,8 @@
             <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
         </div>
 
+        <div id="content">
+
         <div itemscope itemtype="http://schema.org/MusicGroup">
             <h1><span itemprop="name"><%=item.name%></span>'s Albums:</h1>
             <ul id="Albums">    
@@ -28,8 +30,22 @@
                 <% } %>
             </ul>
         </div>
+        
+        <div id="update">
+            <h2>Update info for <%=item.name%></h2>
+            <form method="post" id="NewArtistValue" action="/artists/<%=item._id%>">
+            <input type="hidden" name="_method" value="put">
+            <!-- The line above tells the server to treat this as a PUT request. -->
+            <label>Name: 
+                <input name="item[name]" value="<%=item.name%>" type="text" required>
+            </label>
+            <input type="submit" value="Update" name="SubmitButton" />        
+            </form>
+        </div>
 
-        <div>
+        </div>
+
+        <div id="add">
             <h2>Add an album for <%=item.name%></h2>
             <form method="post"  id="NewAlbum" action="/albums/">
                 <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
@@ -43,19 +59,6 @@
                 <input type="submit" value="Add" name="SubmitButton" />
             </form>
         </div>
-    
-    <div>
-        <h2>Update info for <%=item.name%></h2>
-        <form method="post" id="NewArtistValue" action="/artists/<%=item._id%>">
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-        <label>Name: 
-          <input name="item[name]" value="<%=item.name%>" type="text" required>
-        </label>
-    <input type="submit" value="Update" name="SubmitButton" />
-        
-      </form>
-    </div>
     
     </body>
 </html>

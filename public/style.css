@@ -1,36 +1,41 @@
-<style type="text/css">
 body
 {
 background-color:#fafafa;
-margin:25%;
+margin:2% 5%;
 }
 h1
 {
 color:#605647;
 text-align:left;
-font-size: 25px;
+font-size: 2em;
 }
 h2
 {
 color:#605647;
 text-align:left;
-font-size: 22px;
+font-size: 1.5em;
+}
+h3 {
+    color:#605647;  
+    font-size: 1.2em;
 }
 a
 {
 font-family:"Times New Roman";
-font-size:20px;
 color:#5E6F97;
 }
 p
 {
 font-family:"Times New Roman";
-font-size:20px;
+font-size:1.2em;;
 color:#304962;
 }
 ul
 {
 list-style-type: none;
+}
+li a {
+    font-size: 1.2em;
 }
 form
 {
@@ -53,4 +58,34 @@ border: inset 1px solid #333;
 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
-</style>
+
+#Search form, #add form, .home form {
+    text-align: right;    
+}
+#add label {
+    display: block;
+}
+#content {
+    width: 65%;
+    float: left;
+    margin-right: 5%;
+}
+#Search, #add {
+    width: 30%;
+    float: left;
+}
+#update {
+    margin-top: 5%;
+}
+#update label {
+    margin-right: 2%;
+}
+.home {
+    width: 30%;
+    float: left;
+    margin-right: 4%;
+    background-color: #eaeaea;
+}
+.home:last-child {
+    margin-right: 0;    
+}

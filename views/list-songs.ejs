@@ -9,6 +9,7 @@
             <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | All Songs</p>
         </div>
 
+        <div id="content">
         <h1>Songs</h1>
             <% if (items.length > 0) { %>
                 <ul id="Songs">
@@ -19,18 +20,18 @@
             <% } else { %>
                 <div>No songs found.</div>
             <% } %>
-
+        </div>
 
         <div id="Search">
-
+        <h2>Search songs:</h2>
     <form method="get" id="SearchSongName" action="/songs/">
-        Search Songs by Name: 
+        By Name: 
         <input name="name">
         <input type="submit" value="Search" name="SubmitButton" />
       </form>
 
     <form id="SearchSongGenre" action="/songs/" method="get">
-    Search Songs By Genre: 
+    By Genre: 
     <select name="genres">
   		<option value="Disco">Disco</option>
   		<option value="Pop">Pop</option>
@@ -48,7 +49,7 @@
     </form>
 
     <form id="SearchSongKey" action="/songs/" method="get">
-    Search Songs By Key (Enharmonic Equivalents Not Listed): 
+    By Key (Enharmonic Equivalents Not Listed): 
 	<select name="keys">
         <option value="A">A Maj.</option>
         <option value="a">a min.</option>
@@ -79,7 +80,7 @@
     </form>
 
     <form id="SearchSongTempo" action="/songs/" method="get">
-    Search Songs By Tempo: 
+    By Tempo: 
 	<select name="tempos">
         <option value="larghissimo">Larghissimo</option>
         <option value="grave">Grave</option>

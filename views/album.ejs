@@ -11,105 +11,107 @@
             <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
         </div>
 
-        <div itemscope itemtype="http://schema.org/MusicAlbum">
-            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
-            <div>
-                <% if (related_items.length > 0) { %>
-                    <ul id="Songs">
-                    <% related_items.forEach(function(related_item) { %>
-                        <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
-                            <strong><a itemprop="URL" rel="song" href="/songs/<%=related_item._id%>">
-                                <span itemprop="name"><%=related_item.name%></span>
-                            </a></strong><br />
+        <div id="content">
+            <div itemscope itemtype="http://schema.org/MusicAlbum">
+                <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
+                <div>
+                    <% if (related_items.length > 0) { %>
+                        <ul id="Songs">
+                        <% related_items.forEach(function(related_item) { %>
+                            <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+                                <strong><a itemprop="URL" rel="song" href="/songs/<%=related_item._id%>">
+                                    <span itemprop="name"><%=related_item.name%></span>
+                                </a></strong><br />
         
-                            <% if (related_item.trackNumber !== undefined) { %>
-                                Track <%=related_item.trackNumber%><br />
-                            <% } %>
+                                <% if (related_item.trackNumber !== undefined) { %>
+                                    Track <%=related_item.trackNumber%><br />
+                                <% } %>
             
-                            <% if (related_item.genres !== undefined) { %>
-                                Genres:
-                                <% if (related_item.genres instanceof Array) { %>
-                                    <% var numGenres = related_item.genres.length; %>
-                                    <% for (var i=0; i<numGenres; i++) { %>
-                                        <% if (i < (numGenres - 1)) { %>
-                                            <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>, 
-                                        <% } else { %>
-                                            <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>
+                                <% if (related_item.genres !== undefined) { %>
+                                    Genres:
+                                    <% if (related_item.genres instanceof Array) { %>
+                                        <% var numGenres = related_item.genres.length; %>
+                                        <% for (var i=0; i<numGenres; i++) { %>
+                                            <% if (i < (numGenres - 1)) { %>
+                                                <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>, 
+                                            <% } else { %>
+                                                <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>
+                                            <% } %>
                                         <% } %>
+                                        <br />
+                                    <% } else { %>
+                                        <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres%></span><br />
                                     <% } %>
-                                    <br />
-                                <% } else { %>
-                                    <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres%></span><br />
                                 <% } %>
-                            <% } %>
-        
-                            <% if (related_item.keys !== undefined) { %>
-                                Key:
-                                <% if (related_item.keys instanceof Array) { %>
-                                    <% var numKeys = related_item.keys.length; %>
-                                    <% for (var i=0; i<numKeys; i++) { %>
-                                        <% if (i < (numKeys - 1)) { %>
-                                            <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>, 
-                                        <% } else { %>
-                                            <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>
+            
+                                <% if (related_item.keys !== undefined) { %>
+                                    Key:
+                                    <% if (related_item.keys instanceof Array) { %>
+                                        <% var numKeys = related_item.keys.length; %>
+                                        <% for (var i=0; i<numKeys; i++) { %>
+                                            <% if (i < (numKeys - 1)) { %>
+                                                <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>, 
+                                            <% } else { %>
+                                                <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>
+                                            <% } %>
                                         <% } %>
+                                        <br />
+                                    <% } else { %>
+                                        <span itemprop="musicRecording/key" class="Key"><%=related_item.keys%></span><br />
                                     <% } %>
-                                    <br />
-                                <% } else { %>
-                                    <span itemprop="musicRecording/key" class="Key"><%=related_item.keys%></span><br />
                                 <% } %>
-                            <% } %>
         
-                            <% if (related_item.tempos !== undefined) { %>
-                                Tempo:
-                                <% if (related_item.tempos instanceof Array) { %>
-                                    <% var numTempos = related_item.tempos.length; %>
-                                    <% for (var i=0; i<numTempos; i++) { %>
-                                        <% if (i < (numTempos - 1)) { %>
-                                            <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>, 
-                                        <% } else { %>
-                                            <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>
+                                <% if (related_item.tempos !== undefined) { %>
+                                    Tempo:
+                                    <% if (related_item.tempos instanceof Array) { %>
+                                        <% var numTempos = related_item.tempos.length; %>
+                                        <% for (var i=0; i<numTempos; i++) { %>
+                                            <% if (i < (numTempos - 1)) { %>
+                                                <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>, 
+                                            <% } else { %>
+                                                <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>
+                                            <% } %>
                                         <% } %>
+                                        <br />
+                                    <% } else { %>
+                                        <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos%></span><br />
                                     <% } %>
-                                    <br />
-                                <% } else { %>
-                                    <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos%></span><br />
                                 <% } %>
-                            <% } %>
-        
-                            <% if (related_item.duration !== undefined) { %>
-                                <span itemprop="duration"><%=related_item.duration%></span><br />
-                            <% } %>
+            
+                                <% if (related_item.duration !== undefined) { %>
+                                    <span itemprop="duration"><%=related_item.duration%></span><br />
+                                <% } %>
 
-                        </li>
-                    <% }); %>
-                    </ul>
-                <% } else { %>
-                    </span>
-                    <div>No songs listed for <%=item.name%>.</div>
-                <% } %>
+                            </li>
+                        <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <div>No songs listed for <%=item.name%>.</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div id="update">
+                <h2>Update info for <%=item.name%></h2>
+                <form method="post" id="NewAlbumValue" action="/albums/<%=item._id%>">
+                    <input type="hidden" name="_method" value="put">
+                    <!-- The line above tells the server to treat this as a PUT request. -->
+                    <label>Name: 
+                        <input name="item[name]" value="<%=item.name%>" type="text" required>
+                    </label>
+                    <label>Date:
+                        <input type="text" name="item[datePublished]" value="<%=item.datePublished%>">
+                    </label>
+                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
+                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+        
+                    <input type="submit" value="Update" name="SubmitButton" />
+                </form>
+            </div>            
+            
             </div>
 
-<div>
-<h2>Update info for <%=item.name%></h2>
-            <form method="post" id="NewAlbumValue" action="/albums/<%=item._id%>">
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-        <label>Name: 
-            <input name="item[name]" value="<%=item.name%>" type="text" required>
-        </label>
-        <label>Date:
-            <input type="text" name="item[datePublished]" value="<%=item.datePublished%>">
-        </label>
-        <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
-        <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
-        
-        <input type="submit" value="Update" name="SubmitButton" />
-      </form>
-</div>
-
-
-            <div>
+            <div id="add">
                 <h2>Add a song to <%=item.name%></h2>
                 <form method="post" action="/songs/" id="NewSong">
                     <input type="hidden" name="item[inAlbum]" value="<%=item._id%>">
@@ -187,6 +189,7 @@
                     <input type="submit" value="Add" name="SubmitButton" />
                 </form>
             </div>
+
         </div>
     </body>
 </html>

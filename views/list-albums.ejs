@@ -9,6 +9,7 @@
             <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | All Albums | <a href="/songs/" rel="allSongs">All Songs</a></p>
         </div>
 
+        <div id="content">
         <h1>Albums</h1>
         <% if (items.length > 0) { %>
             <ul id="Albums">
@@ -19,17 +20,18 @@
         <% } else { %>
             <div>No albums have been added.</div>
         <% } %>
+        </div>
 
-
-<div id="Search">
+    <div id="Search">
+        <h2>Search albums:</h2>
       <form method="get" id="SearchAlbumName" action="/albums/">
-        Search Albums by Name: 
+        By Name: 
         <input name="name">
         <input type="submit" value="Search" name="SubmitButton" />
       </form>
    
     <form id="SearchAlbumDate" action="/albums/" method="get">
-    Search Albums By Year: 
+    By Year: 
     <input name="datePublished" />
 	<input type="submit" value="Search" name="SubmitButton" />
     </form>
