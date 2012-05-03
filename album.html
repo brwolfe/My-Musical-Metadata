@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Albums</title>
-  </head>
-  <body>
-    <form method=“post” action=“/album”>
-      <label>New Album:</label>
-      <input name="album" type="text" value="" />
-      <input type="submit" value="Submit" />
-    </form></ br>
-    <ul id=“albums-list”>
-      <li class=“album”>
-        <a href="sample-song.html" rel="album">Album 1</a>
-      </li>
-      <li class=“album”>
-        <a href="sample-song.html" rel="album">Album 2</a>
-      </li>
-      <li class=“album”>
-        <a href="sample-song.html" rel="album">Album 3</a>
-      </li>
+   <title>Artist - Album</title>
+    </head>
+    <body>
+        <div id="Albums">
+        <li class="albums">
+        <a href="/albums/{album.html}" rel="album">Album 1</a>
+        </li>
+        <a href="/albums/{album2.html}" rel="album">Album 2</a>
+        </li>
+        </div>
+  
+        <form method="get" action="/artists/" class="SpecificArtist">
+        <input type="SearchAlbums" name="album-artist" value="" required="true"/>
+        <input type="submit" value="send" />
+        </form>
+
   </body>
 </html>

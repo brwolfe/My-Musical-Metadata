@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Musical Metadata: Home</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+  
+    <div id="Navigation">
+        <p>All Music | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+    </div>
+    
+    <h2>Quick Add:</h2>
+
+    <div>
+        <h2>Add a new artist</h2>
+        <form method="post" id="NewArtist" action="/artists/">
+            <label>Artist name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <button>Add Artist</button>
+        </form>
+    </div>
+        
+    <div>
+        <h2>Add a new genre</h2>
+        <form method="post" id="NewGenre" action="/genres/">
+            <label>Genre:
+                <input name="item[trackGenre]" type="text" required />
+            </label>
+            <button>Add Genre</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Add a new format</h2>
+        <form method="post" id="NewFormat" action="/formats/">
+            <label>Format:
+                <input name="item[trackFormat]" type="text" required />
+            </label>
+            <button>Add Format</button>
+        </form>
+    </div>
+
+  </body>
+
+</html>

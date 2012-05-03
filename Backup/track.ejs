@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+    <head>
+        <title><%=item.name%></title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+
+        <div id="Navigation">
+            <p><a href="/" rel="AllMetadata">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+        </div>
+
+        <div itemscope="http://schema.org/MusicRecording">
+            <h1 itemprop="name"><%=item.name%></h1>
+    
+            <p itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup">Artist:
+                <a href="/artists/<%=item.byArtist%>" rel="artist" itemprop="URL">
+                    <span itemprop="name"><%=item.artistName%></span>
+                </a>
+            </p>            
+    
+            <p itemprop="inAlbum" itemscope itemtype="http://www.schema.org/MusicAlbum">Album:
+                <a href="/albums/<%=item.inAlbum%>" rel="album" itemprop="URL">    
+                    <span itemprop="name"><%=item.albumName%></span>
+                </a>
+            </p> 
+    
+            <% if (item.yearPublished !== undefined) { %>
+                <p>Year published: 
+                    <span itemprop="yearPublished"><%=item.yearPublished%></span>
+                </p>
+            <% } %>  
+
+            <p itemprop="trackGenre" itemscope itemtype="http://www.schema.org/MusicAlbum">Genre:
+                <a href="/genres/<%=item._id%>" rel="track" itemprop="URL">    
+                    <span itemprop="trackGenre"><%=item.trackGenre%></span>
+                </a>
+            </p> 
+
+            <p itemprop="trackFormat" itemscope itemtype="http://www.schema.org/MusicAlbum">Format:
+                <a href="/formats/<%=item._id%>" rel="track" itemprop="URL">    
+                    <span itemprop="trackFormat"><%=item.trackFormat%></span>
+                </a>
+            </p> 
+
+        </div>    
+
+        <div>
+            <h2>Update metadata for <%=item.name%></h2>
+            <form method="post" id="NewTrackValue" action="/tracks/<%=item._id%>">
+                <input type="hidden" name="_method" value="put">
+                <input type="hidden" name="item[inAlbum]" value="<%=item.inAlbum%>">
+                <input type="hidden" name="item[albumName]" value="<%=item.albumName%>">
+                <input type="hidden" name="item[yearPublished]" value="<%=item.yearPublished%>">
+                <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
+                <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+                <label>Track name:
+                    <input name="item[name]" type="text" required
+                        value="<%=item.name%>" />
+                </label>
+                <label>Genre:
+                    <input name="item[trackGenre]" type="text"
+                        value="<%=item.trackGenre%>" />
+                </label>
+                <label>Format:
+                    <input type="text" name="item[trackFormat]" 
+                        value="<%=item.trackFormat%>" />
+                </label>
+                <input type="submit" value="Update" name="SubmitButton" />
+            </form>
+        </div>    
+
+    </body>
+</html>
