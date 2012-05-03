@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BrandCramp: Albums</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div id="Navigation">
+            <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | All Albums | <a href="/songs/" rel="allSongs">All Songs</a></p>
+        </div>
+
+        <div id="content">
+        <h1>Albums</h1>
+        <% if (items.length > 0) { %>
+            <ul id="Albums">
+                <% items.forEach(function(item) { %>
+                    <li itemscope itemtype="http://schema.org/MusicAlbum" class="SpecificAlbum"><a itemprop="URL" rel="album" href="/albums/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a> <a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>" itemscope itemtype="http://schema.org/MusicGroup">(<span itemprop="name"><%=item.artistName%></span>)</a></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div>No albums have been added.</div>
+        <% } %>
+        </div>
+
+    <div id="Search">
+        <h2>Search albums:</h2>
+      <form method="get" id="SearchAlbumName" action="/albums/">
+        By Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
+      </form>
+   
+    <form id="SearchAlbumDate" action="/albums/" method="get">
+    By Year: 
+    <input name="datePublished" />
+	<input type="submit" value="Search" name="SubmitButton" />
+    </form>
+ </div>
+    </body>
+</html>

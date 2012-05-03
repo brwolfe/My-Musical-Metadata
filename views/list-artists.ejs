@@ -1,0 +1,48 @@
+<!-- we need to update this with properties / values for the tags. should probably use whatever is used here (Artist?g=Tropicalia.html), but that file isn't working on github... -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BrandCramp: Artists</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+        <div id="Navigation">
+            <p><a href="/" rel="allMusic">All the Musics</a> | All Recording Artists | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
+        </div>
+
+    <div id="content">
+    <h1>Artists</h1>
+    <% if (items.length > 0) { %>
+    <ul id="Artists">
+      <% items.forEach(function(item) { %>
+      <li itemscope itemtype="http://schema.org/MusicGroup" class="SpecificArtist"><a itemprop="URL" rel="artist" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <div>No artists found.</div>
+    <% } %>
+    
+        <div>
+        <h2>Add a new artist</h2>
+        <form method="post" id="NewArtist" action="/artists/">
+            <label>Artist name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <button>Add</button>
+        </form>
+        </div>
+    
+    </div>
+
+    <div id="Search">
+    <h2>Search artists:</h2>
+      <form method="get" id="SearchArtist" action="/artists/">
+        By Name: 
+        <input name="name">
+        <input type="submit" value="Search" name="SubmitButton" />
+      </form>
+    </div>
+
+  </body>
+</html>

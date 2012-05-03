@@ -1,0 +1,61 @@
+- Make search work on multi-value fields
+[DONE.]
+- Search by name for each resource type [DONE.]
+- Check that all divs containing search forms have <id="Search"> [DONE.]
+- Check that the "SubmitButton" name attribute is on all form attributes [DONE.]
+- Add <name="item[inAlbum, etc.]" to names list [Not clear on what this is]
+- Deploy this thing
+
+
+- ReadMe [DONE]
+- Add Search Artist by Name [DONE]
+- Basic CSS - [DONE]
+
+- discuss resource types. should songs be a type? tracks? are they the same type or different?
+[DONE. for now we are ignoring playlists. song will be a resource type, and list of songs. views added for the new resource types.]
+
+- add / wrangle forms to add / update each resource type.
+[DONE: post for artists, albums, songs.]
+[DONE: put / update.]
+
+- query forms
+[TO DO: this.]
+
+- address various issues with the views (see comments within individual docs) [DONE]
+    -All songs (from query)
+    -Single song
+
+- add handler functions within app.js
+[DONE except for making queries work.]
+[TO DO: make queries work...]
+
+- add microdata (within all views)
+[DONE unless someone wants to double check it...]
+    Album.ejs - DONE - TESTED
+    Artist.ejs - DONE - TESTED
+    index.ejs - DONE - TESTED
+    list-albums.ejs - DONE - TESTED
+    list-artists.ejs - DONE - TESTED
+    list-songs.ejs - DONE - TESTED
+    playlist.ejs
+    Playlists.ejs
+    song.ejs - DONE - TESTED
+
+- make sure everything has the appropriate classes etc  DONE
+["Your HTML representations must include the proper hypermedia controls for linking representations to one another, creating query URIs from templates, and updating resources both idempotently and non-idempotently. Your HTML controls must have appropriate id attribute values, class attribute values, name attribute values, and rel attribute values that describe their meaning and purpose (this was the work you did for the Designing a Hypermedia Type assignment)."]
+
+<<<<<<< HEAD
+- add basic navigation
+[DONE]
+=======
+- add basic navigation  DONE
+>>>>>>> 4fd86bbe9c101cb1e3efb7cc276cc51ff8e1c22e
+
+- add some basic CSS
+
+Punt List
+    -Distinguishing "recording" from "song"
+        -New views and new handlers
+        -Establish many-to-many relationship
+    -Playlist
+    
