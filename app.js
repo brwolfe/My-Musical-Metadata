@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-var USER_OR_GROUP_NAME = 'brwolfe'; // TODO: Insert GitHub username or group name.
+var USER_OR_GROUP_NAME = 'brwolfe';
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -18,9 +18,6 @@ var app = utils.initializeWebApp();
 // Connect to your database.
 var db = utils.connectToDatabase(USER_OR_GROUP_NAME);
 
-// TODO: Start defining your resource handlers. You may just need to modify the
-// examples below, or you may need to add additional handlers by copying,
-// pasting, and modifying these examples.
 
 ////////////////////////////////////////////////////////////////////////////////
 // GET a list of artists. //////////////////////////////////////////////////////
@@ -39,7 +36,7 @@ app.get('/artists/',
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'artists-list',   // TODO: change to the name of your HTML template.
+          'artists-list',  
           { items: items }
         );
       }
@@ -85,7 +82,7 @@ app.get('/artists/:id',
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'artist', // TODO: change to name of your HTML template.
+              'artist',
               { item: item, related_items: items }
             );
           }
@@ -98,10 +95,10 @@ app.get('/artists/:id',
 ////////////////////////////////////////////////////////////////////////////////
 // GET a list of albums. ///////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/albums/',         // TODO: change to suit your URI design. 
+app.get('/albums/',         
   function(req, res) {
 
-    var item_type = 'album'; // TODO: change to the type of item you want.
+    var item_type = 'album'; 
 
     // Get all items of the specified type from the database.
     db.getSome(item_type, req.query, function(err, items) {
@@ -112,7 +109,7 @@ app.get('/albums/',         // TODO: change to suit your URI design.
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'albums-list',   // TODO: change to the name of your HTML template.
+          'albums-list',   
           { items: items }
         );
       }
@@ -122,13 +119,13 @@ app.get('/albums/',         // TODO: change to suit your URI design.
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET a single album resource, which a list of dependent tracks. ///////////////
+// GET a single album resource, which a list of dependent tracks. //////////////
 // Get those too as related items. /////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/albums/:id',       // TODO: change to suit your URI design.
+app.get('/albums/:id',     
   function(req, res) {
 
-    var item_type = 'album'; // TODO: change to the type of item you want.
+    var item_type = 'album'; 
 
     // Get the item ID from the URI.
     var item_id = req.params.id;
@@ -147,7 +144,7 @@ app.get('/albums/:id',       // TODO: change to suit your URI design.
       // Otherwise, get the items potentially related to this item.
       else {
         
-        var related_type = 'track'; // TODO: change to type of related item.
+        var related_type = 'track'; 
 
         req.query.byArtist = item_id;
         
@@ -160,7 +157,7 @@ app.get('/albums/:id',       // TODO: change to suit your URI design.
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'album', // TODO: change to name of your HTML template.
+              'album', 
               { item: item, related_items: items }
             );
           }
@@ -171,12 +168,12 @@ app.get('/albums/:id',       // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// GET a list of tracks by search criteria. ///////////////////////////////////////////////////////
+// GET a list of tracks by search criteria. ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/tracks/',         // TODO: change to suit your URI design. 
+app.get('/tracks/',         
   function(req, res) {
 
-    var item_type = 'track'; // TODO: change to the type of item you want.
+    var item_type = 'track'; 
  
     // Get all items of the specified type from the database.
     db.getSome(item_type, req.query, function(err, items) {
@@ -187,7 +184,7 @@ app.get('/tracks/',         // TODO: change to suit your URI design.
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'tracks-list',   // TODO: change to the name of your HTML template.
+          'tracks-list',  
           { items: items }
         );
       }
@@ -199,10 +196,10 @@ app.get('/tracks/',         // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // GET a single song resource with a list of related albums. ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/tracks/:id',       // TODO: change to suit your URI design.
+app.get('/tracks/:id',  
   function(req, res) {
 
-    var item_type = 'track'; // TODO: change to the type of item you want.
+    var item_type = 'track'; 
 
     // Get the item ID from the URI.
     var item_id = req.params.id;
@@ -219,7 +216,7 @@ app.get('/tracks/:id',       // TODO: change to suit your URI design.
       // Otherwise, get the items potentially related to this item.
       else {
         
-        var related_type = 'album'; // TODO: change to type of related item.
+        var related_type = 'album'; 
 
         // Get all items of the specified related type.
         db.getAll(related_type, function(err, items) {
@@ -230,7 +227,7 @@ app.get('/tracks/:id',       // TODO: change to suit your URI design.
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'track', // TODO: change to name of your HTML template.
+              'track',
               { item: item, related_items: items }
             );
           }
@@ -257,7 +254,7 @@ app.get('/formats/',
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'formats-list',   // TODO: change to the name of your HTML template.
+          'formats-list',   
           { items: items }
         );
       }
@@ -267,7 +264,7 @@ app.get('/formats/',
 
 ////////////////////////////////////////////////////////////////////////////////
 // GET a single format resource, which is a list of tracks. ////////////////////
-// Also get the related track information.////////////////////////////////////////////////
+// Also get the related track information.//////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/formats/:id',      
   function(req, res) {
@@ -301,7 +298,7 @@ app.get('/formats/:id',
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'format', // TODO: change to name of your HTML template.
+              'format', 
               { item: item, related_items: items }
             );
           }
@@ -328,7 +325,7 @@ app.get('/genres/',
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'genres-list',   // TODO: change to the name of your HTML template.
+          'genres-list',   
           { items: items }
         );
       }
@@ -371,7 +368,7 @@ app.get('/genres/:id',
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'genre', // TODO: change to name of your HTML template.
+              'genre', 
               { item: item, related_items: items }
             );
           }
@@ -385,10 +382,10 @@ app.get('/genres/:id',
 ////////////////////////////////////////////////////////////////////////////////
 // GET the root resource. //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/',         // TODO: change to suit your URI design. 
+app.get('/', 
   function(req, res) {
 
-    var item_type = 'artist'; // TODO: change to the type of item you want.
+    var item_type = 'artist';
 
     // Get all items of the specified type from the database.
     db.getAll(item_type, function(err, items) {
@@ -398,7 +395,7 @@ app.get('/',         // TODO: change to suit your URI design.
 
       // Otherwise, use the returned data to render an HTML page.
       else {
-        res.render('index',   // TODO: change to the name of your HTML template.
+        res.render('index',  
           { items: items }
         );
       }
@@ -409,14 +406,13 @@ app.get('/',         // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // POST to create an artist (ID created automatically). ////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/artists/', // TODO: change to suit your URI design.
+app.post('/artists/',
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
-    // See the form in `views/one-party.ejs`.
     var item = req.body.item;
 
-    item.type = 'artist'; // TODO: change to the type of item you want
+    item.type = 'artist'; 
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -432,14 +428,13 @@ app.post('/artists/', // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // POST to create an album (ID created automatically). /////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/albums/', // TODO: change to suit your URI design.
+app.post('/albums/', 
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
-    // See the form in `views/one-party.ejs`.
     var item = req.body.item;
 
-    item.type = 'album'; // TODO: change to the type of item you want
+    item.type = 'album';
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -454,15 +449,15 @@ app.post('/albums/', // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// POST to create a song (ID created automatically). ///////////////////////////
+// POST to create a track (ID created automatically). ///////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/tracks/', // TODO: change to suit your URI design.
+app.post('/tracks/',
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
     var item = req.body.item;
 
-    item.type = 'track'; // TODO: change to the type of item you want
+    item.type = 'track';
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -479,13 +474,13 @@ app.post('/tracks/', // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // POST to create a format (ID created automatically). ////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/formats/', // TODO: change to suit your URI design.
+app.post('/formats/',
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
     var item = req.body.item;
 
-    item.type = 'format'; // TODO: change to the type of item you want
+    item.type = 'format';
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -499,16 +494,15 @@ app.post('/formats/', // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// POST to create a genre (ID created automatically). /////////////////////////
+// POST to create a genre (ID created automatically). //////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/genres/', // TODO: change to suit your URI design.
+app.post('/genres/',
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
-    // See the form in `views/one-party.ejs`.
     var item = req.body.item;
 
-    item.type = 'genre'; // TODO: change to the type of item you want
+    item.type = 'genre'; //
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -525,18 +519,17 @@ app.post('/genres/', // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // PUT to update an artist. ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/artists/:id', // TODO: change to suit your URI design.
+app.put('/artists/:id', 
   function(req, res) {
   
     // Get the item ID from the URI.
     var item_id = req.params.id;
 
     // Get the item info that was PUT from the input form.
-    // See the form in `views/one-candidate.ejs`.
     var item = req.body.item;
 
-    item.type = 'artist'; // TODO: change to the type of item you want
-
+    item.type = 'artist'; 
+    
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
 
@@ -553,17 +546,16 @@ app.put('/artists/:id', // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // PUT to update an album. /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/albums/:id', // TODO: change to suit your URI design.
+app.put('/albums/:id', 
   function(req, res) {
   
     // Get the item ID from the URI.
     var item_id = req.params.id;
 
     // Get the item info that was PUT from the input form.
-    // See the form in `views/album.ejs`.
     var item = req.body.item;
 
-    item.type = 'album'; // TODO: change to the type of item you want
+    item.type = 'album';
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -578,19 +570,18 @@ app.put('/albums/:id', // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// PUT to update a track. ///////////////////////////////////////////////////////
+// PUT to update a track. //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/tracks/:id', // TODO: change to suit your URI design.
+app.put('/tracks/:id', 
   function(req, res) {
   
     // Get the item ID from the URI.
     var item_id = req.params.id;
 
     // Get the item info that was PUT from the input form.
-    // See the form in `views/track.ejs`.
     var item = req.body.item;
 
-    item.type = 'track'; // TODO: change to the type of item you want
+    item.type = 'track';
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -605,19 +596,18 @@ app.put('/tracks/:id', // TODO: change to suit your URI design.
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// PUT to update a format. ////////////////////////////////////////////////////
+// PUT to update a format. /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/formats/:id', // TODO: change to suit your URI design.
+app.put('/formats/:id', 
   function(req, res) {
   
     // Get the item ID from the URI.
     var item_id = req.params.id;
 
     // Get the item info that was PUT from the input form.
-    // See the form in `views/one-candidate.ejs`.
     var item = req.body.item;
 
-    item.type = 'format'; // TODO: change to the type of item you want
+    item.type = 'format'; 
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -635,17 +625,16 @@ app.put('/formats/:id', // TODO: change to suit your URI design.
 ////////////////////////////////////////////////////////////////////////////////
 // PUT to update a genre. /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/genres/:id', // TODO: change to suit your URI design.
+app.put('/genres/:id', 
   function(req, res) {
   
     // Get the item ID from the URI.
     var item_id = req.params.id;
 
     // Get the item info that was PUT from the input form.
-    // See the form in `views/album.ejs`.
     var item = req.body.item;
 
-    item.type = 'genre'; // TODO: change to the type of item you want
+    item.type = 'genre'; 
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
