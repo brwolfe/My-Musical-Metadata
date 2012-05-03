@@ -1,41 +1,59 @@
-# An example web information service
+**ID attribute values**
+*SearchArtist* -- Applied to a form, used for templated query links leading to a resource of Artists.
+*SearchAlbumName* -- Applied to a form, used for templated query links leading to a resource of Albums.
+*SearchAlbumDate* -- Applied to a form, used for templated query links leading to a resource of Albums.
+*SearchSongName* -- Applied to a form, used for templated query links leading to a resource of Songs.
+*SearchSongGenre* -- Applied to a form, used for templated query links leading to a resource of Songs.
+*SearchSongKey* -- Applied to a form, used for templated query links leading to a resource of Songs.
+*SearchSongTempo* -- Applied to a form, used for templated query links leading to a resource of Songs.
+*Artists* -- Applied to a *<ul>*, used for identifying a list of all Artists.
+*NewArtist* --  Applied to a *<form>*, used to template the URI for creating a new Artist resource using POST.
+*NewArtistValue* -- Applied to a *<form>*, used to template the URI for updating an Artist resource using PUT.
+*Songs* -- Applied to an *<ul>*, used for identifying the Songs in an Album resource.
+*NewSong* -- Applied to a *<form>*, used to template the URI for creating a new Song resource using POST.
+*NewSongValue* -- Applied to a *<form>*, used to template the URI for updating an Song resource using PUT.
+*Albums* -- Applied to an *<ul>*, used for identifying Albums.
+*NewAlbum* -- Applied to a *<form>*, used to template the URI for creating a new Album resource using POST.
+*NewAlbumValue* -- Applied to a *<form>*, used to template the URI for updating an Album resource using PUT.
+*Search* -- Applied to a *<div>*, used for identifying the section of the representation that houses the forms used for templated query links.
+*update* -- Applied to a div that contains the form to update the current resource.
+*add* -- Applied to a div that contains the form to add a child resource to the current resource.
 
-This is an example application intended to be used as a starting point for the final project in [INLS 490-186 Web Information Organization](http://aeshin.org/teaching/inls-490-186/2012/sp/).
+**Class attribute values**
+*SpecificArtist* -- Applied to a *<li>*, used to identify an Artist.
+*SpecificAlbum* -- Applied to a *<li>*, used to identify an Album.
+*Genre* -- Applied to a *<span>*, used to identify a Genre.
+*Key* -- Applied to a *<span>*, used to identify a Key.
+*Tempo* -- Applied to a *<span>*, used to identify a Tempo.
+*Song* -- Applied to a *<li>*, used to identify a Song.
 
-## Forking this repository
+**Name attribute values**
+*SubmitButton* -- Applied to an *<input>* element, used to identify a submit button.
+*tempos* -- Applied to an *<menu>* element used to input a Tempo.
+*name, datePublished, keys, tempos, genres* -- Applied to a search form input or select that should search by the relevant property of the item.
+*item[prop]* -- for any given prop; applied to a form field, identifies the property that should be assigned to the item via the value of that field.
 
-You will want to start by [forking](http://help.github.com/fork-a-repo/) this repository so you have your own copy to modify. If you decide to work in a group, I will put a copy of the code in your shared repository. (While it's possible to collaborate with your group by pushing and pulling commits across your two or three separate forks, doing so requires somewhat advanced knowledge of Git and thus isn't expected for this assignment.)
+**Rel attribute values**
+*album* -- Used on an *<a>* element, describing the linked resource as the Albums by Artist representation.
+*artist* -- Used on an *<a>* element, describing the linked resource as the Artist representation.
+*song* -- Used on an *<a>* element, describing the linked resource as the Song representation.
+*allArtists* -- Used on an *<a>* element, describing the linked resource as the representation for all artists.
+*allAlbums* -- Used on an *<a>* element, describing the linked resource as the representation for all songs.
+*allSongs* -- Used on an *<a>* element, describing the linked resource as the representation for all songs.
 
-If you're working alone, please **rename your GitHub repository** to something more suitable for your service. You can do this by clicking on the ![admin](/sils-webinfo/election/raw/master/doc/img/admin.png) button from your repository's page on GitHub. A one-word, no-spaces name is best. (If you're working in a group the repository will be named after your group).
-
-## Cloning your project in Cloud9
-
-*Coming soon*
-
-## Modifying the example code
-
-There are only three places where the example service needs to be modified to implement your own service:
-
-1. [`app.js`](https://github.com/sils-webinfo/election/blob/master/app.js) contains all the logic for handling HTTP requests. You may just need to modify the examples in this file, or you may need to add additional request handlers by copying, pasting, and modifying these examples. The only parts you should *need* to change are marked with with `TODO` comments. In particular, make sure you edit the value of the `USER_OR_GROUP_NAME` variable at the top of this file to match your GitHub user name (if you're working alone) or your group name:
-
-    ```javascript
-    var USER_OR_GROUP_NAME = ''; // TODO: Insert GitHub username or group name.
-    ```
-
-1. The [`views`](https://github.com/sils-webinfo/election/tree/master/views) directory contains all the EJS ([Embedded JavaScript](http://embeddedjs.com/)) templates for the service. You will need to create new templates suitable for your application, using these examples as models. The templates should include the metadata describing your application flow and data.
-
-1. Finally, you need to edit [`package.json`](https://github.com/sils-webinfo/election/blob/master/package.json) and change the value of the `name` property to whatever you named your project.
-
-## Testing your code
-
-*Coming soon*
-
-## Troubleshooting
-
-*Coming soon*
-
-## Deploying to Heroku
-
-*Coming soon*
-
-
+**Ontology**
+-Thing
+    -name
+    -CreativeWork
+        -datePublished → Date
+        -genre → Text
+        -MusicRecording
+            -byArtist → MusicGroup
+            -duration → Duration
+            -inAlbum → MusicAlbum
+            -keys → Text (Extension)
+            -tempos → Range (Extension)
+    -Organization
+        -PerformingGroup
+            -MusicGroup
+                -albums → MusicAlbum
