@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Musical Metadata: Genres</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+
+        <div id="Navigation">
+        <p><a href="/" rel="AllMetada">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | All Genres | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+        </div>
+
+        <h1>Genres</h1>
+            <% if (items.length > 0) { %>
+                <ul id="Genres">
+                    <% items.forEach(function(item) { %>
+                        <li itemscope itemtype="http://schema.org/MusicRecording" class="SpecificGenre"><a itemprop="URL" rel="genre" href="/genres/<%=item._id%>"><span itemprop="name"><%=item.trackGenre%></span></a></li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <div>No genres have been added.</div>
+            <% } %>
+
+
+        <div id="Search">
+
+           <h2>Search for genres</h2>
+
+            <form method="get" id="SearchGenres" action="/genres/">
+             <label>Genre: <input name="trackGenre"></label>
+             <input type="submit" value="Search" name="SubmitButton" />
+            </form>
+
+        </div>
+
+    <div>
+        <h2>Add a new genre</h2>
+        <form method="post" id="NewGenre" action="/genres/">
+            <label>Genre:
+                <input name="item[trackGenre]" type="text" required />
+            </label>
+            <button>Add Genre</button>
+        </form>
+    </div>
+
+    </body>
+</html>

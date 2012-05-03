@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title><%=item.name%></title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+        <div id="Navigation">
+            <p><a href="/" rel="AllMetada">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+        </div>
+
+        <h1><span itemprop="name"<%=item.name%></span>
+
+        <div itemscope itemtype="http://schema.org/MusicAlbum">
+            <h1><span itemprop="trackGenre" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.trackGenre%></span></span> Tracks:</h1>
+            <div>
+                <% if (related_items.length > 0) { %>
+                    <ul id="Tracks">
+                    <% related_items.forEach(function(related_item) { %>
+                        <li class="SpecificTrack" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+                            <strong><a itemprop="URL" rel="track" href="/tracks/<%=related_item._id%>">
+                                <span itemprop="name"><%=related_item.name%></span>
+                            </a></strong>
+                        </li>
+                    <% }); %>
+                    </ul>
+                <% } else { %>
+                    </span>
+                    <div>No tracks listed for the <%=item.trackGenre%> genre.</div>
+                <% } %>
+            </div>
+
+        <div>
+            <h2>Update info for <%=item.name%></h2>
+            <form method="post" id="NewGenreValue" action="/genres/<%=item._id%>">
+            <input type="hidden" name="_method" value="put">
+            <label>Genre: 
+            <input name="item[genre]" value="<%=item.trackGenre%>" type="text" required>
+            </label>
+        <input type="submit" value="Update Info" name="SubmitButton" />
+          </form>
+        </div>
+    
+    </body>
+</html>

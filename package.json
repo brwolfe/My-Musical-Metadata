@@ -1,6 +1,6 @@
 {
-  "name": "steampunkunicorn",
-  "version": "0.0.1",
+  "name": "my-musical-metadata",
+  "version": "1.0.0",
   "engines": {
     "node": "0.6.x",
     "npm":  "1.0.x"

@@ -1,195 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
-        <title>BrandCramp: <%=item.name%></title>
+        <title><%=item.name%></title>
         <link rel="stylesheet" href="/style.css">
     </head>
   
     <body>
 
         <div id="Navigation">
-            <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
+            <p><a href="/" rel="AllMetada">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
         </div>
 
-        <div id="content">
-            <div itemscope itemtype="http://schema.org/MusicAlbum">
-                <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span></h1>
-                <div>
-                    <% if (related_items.length > 0) { %>
-                        <ul id="Songs">
-                        <% related_items.forEach(function(related_item) { %>
-                            <li class="Song" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
-                                <strong><a itemprop="URL" rel="song" href="/songs/<%=related_item._id%>">
-                                    <span itemprop="name"><%=related_item.name%></span>
-                                </a></strong><br />
-        
-                                <% if (related_item.trackNumber !== undefined) { %>
-                                    Track <%=related_item.trackNumber%><br />
-                                <% } %>
-            
-                                <% if (related_item.genres !== undefined) { %>
-                                    Genres:
-                                    <% if (related_item.genres instanceof Array) { %>
-                                        <% var numGenres = related_item.genres.length; %>
-                                        <% for (var i=0; i<numGenres; i++) { %>
-                                            <% if (i < (numGenres - 1)) { %>
-                                                <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>, 
-                                            <% } else { %>
-                                                <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres[i]%></span>
-                                            <% } %>
-                                        <% } %>
-                                        <br />
-                                    <% } else { %>
-                                        <span itemprop="musicRecording/genre" class="Genre"><%=related_item.genres%></span><br />
-                                    <% } %>
-                                <% } %>
-            
-                                <% if (related_item.keys !== undefined) { %>
-                                    Key:
-                                    <% if (related_item.keys instanceof Array) { %>
-                                        <% var numKeys = related_item.keys.length; %>
-                                        <% for (var i=0; i<numKeys; i++) { %>
-                                            <% if (i < (numKeys - 1)) { %>
-                                                <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>, 
-                                            <% } else { %>
-                                                <span itemprop="musicRecording/key" class="Key"><%=related_item.keys[i]%></span>
-                                            <% } %>
-                                        <% } %>
-                                        <br />
-                                    <% } else { %>
-                                        <span itemprop="musicRecording/key" class="Key"><%=related_item.keys%></span><br />
-                                    <% } %>
-                                <% } %>
-        
-                                <% if (related_item.tempos !== undefined) { %>
-                                    Tempo:
-                                    <% if (related_item.tempos instanceof Array) { %>
-                                        <% var numTempos = related_item.tempos.length; %>
-                                        <% for (var i=0; i<numTempos; i++) { %>
-                                            <% if (i < (numTempos - 1)) { %>
-                                                <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>, 
-                                            <% } else { %>
-                                                <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos[i]%></span>
-                                            <% } %>
-                                        <% } %>
-                                        <br />
-                                    <% } else { %>
-                                        <span itemprop="musicRecording/tempo" class="Tempo"><%=related_item.tempos%></span><br />
-                                    <% } %>
-                                <% } %>
-            
-                                <% if (related_item.duration !== undefined) { %>
-                                    <span itemprop="duration"><%=related_item.duration%></span><br />
-                                <% } %>
-
-                            </li>
-                        <% }); %>
-                        </ul>
-                    <% } else { %>
-                        <div>No songs listed for <%=item.name%>.</div>
-                    <% } %>
-                </div>
+        <div itemscope itemtype="http://schema.org/MusicAlbum">
+            <h1><span itemprop="byArtist" itemscope itemtype="http://www.schema.org/MusicGroup"><span itemprop="name"><%=item.artistName%></span></span> -- <span itemprop="name"><%=item.name%></span> <span itemscope itemtype="http://www.schema.org/MusicGroup">(<span itemprop="yearPublished"><%=item.yearPublished%></span>)</span></h1>
+            <div>
+                <% if (related_items.length > 0) { %>
+                    <ul id="Tracks">
+                    <% related_items.forEach(function(related_item) { %>
+                        <li class="Track" itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+                            <strong><a itemprop="URL" rel="track" href="/tracks/<%=related_item._id%>">
+                                <span itemprop="name"><%=related_item.name%></span>
+                            </a></strong><br />
+                        </li>
+                    <% }); %>
+                    </ul>
+                <% } else { %>
+                    </span>
+                    <div>No tracks listed for <%=item.name%>.</div>
+                <% } %>
             </div>
-            
-            <div id="update">
-                <h2>Update info for <%=item.name%></h2>
+
+            <div>
+                <h2>Add a track to <%=item.name%></h2>
+                <form method="post" id="NewTrack" action="/tracks/">
+                    <input type="hidden" name="item[inAlbum]" value="<%=item._id%>">
+                    <input type="hidden" name="item[albumName]" value="<%=item.name%>">
+                    <input type="hidden" name="item[yearPublished]" value="<%=item.yearPublished%>">
+                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
+                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
+                    <label>Track name:
+                        <input name="item[name]" type="text" required />
+                    </label>
+                    <label>Track format:
+                        <input name="item[trackFormat]" type="text" required />
+                    </label>
+                    <label>Genre:
+                        <input name="item[trackGenre]" type="text" required />
+                    </label>
+                    <input type="submit" value="Add" name="SubmitButton" />
+                  </form>
+            </div>
+
+            <div>
+            <h2>Update info for <%=item.name%></h2>
                 <form method="post" id="NewAlbumValue" action="/albums/<%=item._id%>">
                     <input type="hidden" name="_method" value="put">
-                    <!-- The line above tells the server to treat this as a PUT request. -->
                     <label>Name: 
                         <input name="item[name]" value="<%=item.name%>" type="text" required>
                     </label>
-                    <label>Date:
-                        <input type="text" name="item[datePublished]" value="<%=item.datePublished%>">
+                    <label>Year: 
+                        <input name="item[yearPublished]" value="<%=item.yearPublished%>" type="text" required>
                     </label>
                     <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
                     <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
-        
                     <input type="submit" value="Update" name="SubmitButton" />
                 </form>
-            </div>            
-            
             </div>
 
-            <div id="add">
-                <h2>Add a song to <%=item.name%></h2>
-                <form method="post" action="/songs/" id="NewSong">
-                    <input type="hidden" name="item[inAlbum]" value="<%=item._id%>">
-                    <input type="hidden" name="item[albumName]" value="<%=item.name%>">
-                    <input type="hidden" name="item[datePublished]" value="<%=item.datePublished%>">
-                    <input type="hidden" name="item[byArtist]" value="<%=item.byArtist%>">
-                    <input type="hidden" name="item[artistName]" value="<%=item.artistName%>">
-                    <label>Song name:
-                        <input name="item[name]" type="text" required="required" />
-                    </label>
-                    <label>Track number:
-                        <input name="item[trackNumber]" type="text" />
-                    </label>
-                    <label>Genre(s):
-                        <select name="item[genres]" multiple>
-                            <option value="Disco">Disco</option>
-                              <option value="Pop">Pop</option>
-                        	<option value="Scandinavian">Scandinavian</option>
-                         	<option value="Comedy">Comedy</option>
-                    		<option value="Polka">Polka</option>
-                    		<option value="Metal">Metal</option>
-                    		<option value="Jazz">Jazz</option>
-                     		<option value="Tropicalia">Tropicalia</option>
-                     		<option value="Lounge">Lounge</option>
-                    		<option value="Avant-garde">Avant-garde</option>
-                        	<option value="Experimental">Experimental</option>
-                        </select>
-                    </label>
-                    <label>Key(s):
-                        <select name="item[keys]" multiple>
-                            <option value="A">A Maj.</option>
-                            <option value="a">a min.</option>
-                	        <option value="G#">A&#9837; Maj.</option>
-                            <option value="B">B Maj.</option>
-                            <option value="b">b min.</option>
-                            <option value="A#">B&#9837; Maj.</option>
-                            <option value="a#">b&#9837; min.</option>
-              	   	        <option value="C">C Maj.</option>
-                            <option value="c">c min.</option>
-                            <option value="c#">c# min.</option>
-              	    	    <option value="D">D Maj.</option>
-                            <option value="C#">D&#9837; Maj.</option>
-                            <option value="d">d min.</option>
-                            <option value="d#">d# min.</option>
-                      	    <option value="D#">E&#9837; Maj.</option>
-              		        <option value="E">E Maj.</option>
-                            <option value="e">e min.</option>
-              	            <option value="F">F Maj.</option>
-                            <option value="f">f min.</option>
-                            <option value="F#">F# Maj.</option>
-                            <option value="f#">f# min.</option>
-                            <option value="G">G Maj.</option>
-                            <option value="g">g min.</option>
-                            <option value="g#">g# min.</option>
-        	            </select>
-                    </label>
-                    <label>Tempo:
-                        <select name="item[tempos]" multiple>
-                            <option value="larghissimo">Larghissimo</option>
-                            <option value="grave">Grave</option>
-                            <option value="lento">Lento</option>
-                            <option value="larghetto">Larghetto</option>
-                            <option value="adagio">Adagio</option>
-                            <option value="andante">Andante</option>
-                            <option value="moderato">Moderato</option>
-                            <option value="allegretto">Allegretto</option>
-                            <option value="allegro">Allegro</option>
-                            <option value="presto">Presto</option>
-                            <option value="prestissimo">Prestissimo</option>
-                        </select>
-                    </label>
-                    <label>Duration:
-                        <input type="text" name="item[duration]" />
-                    </label>
-                    <input type="submit" value="Add" name="SubmitButton" />
-                </form>
-            </div>
-
-        </div>
     </body>
 </html>

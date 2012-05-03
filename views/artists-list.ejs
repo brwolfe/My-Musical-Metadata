@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Musical Metadata: Artists</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+        <div id="Navigation">
+        <p><a href="/" rel="AllMetadata">Metadata Home</a> | All Artists | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+        </div>
+
+    <h1>Artists</h1>
+    <% if (items.length > 0) { %>
+    <ul id="Artists">
+      <% items.forEach(function(item) { %>
+      <li itemscope itemtype="http://schema.org/MusicGroup" class="SpecificArtist"><a itemprop="URL" rel="artist" href="/artists/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <div>No artists have been found.</div>
+    <% } %>
+
+    <div>
+        <h2>Add a new artist</h2>
+        <form method="post" id="NewArtist" action="/artists/">
+            <label>Artist name:
+                <input name="item[name]" type="text" required
+                    />
+            </label>
+            <button>Add Artist</button>
+        </form>
+    </div>
+
+  </body>
+</html>

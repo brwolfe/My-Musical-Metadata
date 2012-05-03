@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Musical Metadata: Tracks</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+
+        <div id="Navigation">
+        <p><a href="/" rel="AllMetada">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | All Tracks | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
+        </div>
+
+        <h1>Tracks</h1>
+            <% if (items.length > 0) { %>
+                <ul id="Tracks">
+                    <% items.forEach(function(item) { %>
+                        <li itemscope itemtype="http://schema.org/MusicRecording" class="SpecificArtist"><a itemprop="byArtist" rel="artist" href="/artists/<%=item.byArtist%>"><span itemprop="name"><%=item.artistName%></span></a> -- <itemscope itemtype="http://schema.org/MusicRecording" class="SpecificArtist"> <a itemprop="URL" rel="track" href="/tracks/<%=item._id%>"><span itemprop="name"><%=item.name%></span></a></li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <div>No tracks have been added.</div>
+            <% } %>
+
+
+        <div id="Search">
+
+           <h2>Search for tracks</h2>
+
+            <form method="get" id="SearchTracks" action="/tracks/">
+             <label>Track name: <input name="name"></label>
+             <input type="submit" value="Search" name="SubmitButton" />
+            </form>
+
+        </div>
+
+    </body>
+</html>

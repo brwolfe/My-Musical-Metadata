@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
-        <title>Albums by <%=item.name%></title>
+        <title><%=item.name%></title>
         <link rel="stylesheet" href="/style.css">
     </head>
 
     <body>
+
         <div id="Navigation">
-            <p><a href="/" rel="allMusic">All the Musics</a> | <a href="/artists/" rel="allArtists">All Recording Artists</a> | <a href="/albums/" rel="allAlbums">All Albums</a> | <a href="/songs/" rel="allSongs">All Songs</a></p>
+            <p><a href="/" rel="AllMetada">Metadata Home</a> | <a href="/artists/" rel="AllArtists">All Artists</a> | <a href="/albums/" rel="AllAlbums">All Albums</a> | <a href="/tracks/" rel="AllTracks">All Tracks</a> | <a href="/genres/" rel="AllGenres">All Genres</a> | <a href="/formats/" rel="AllFormats">All Formats</a></p>
         </div>
 
-        <div id="content">
+        <h1><span itemprop="name"<%=item.name%></span>
 
         <div itemscope itemtype="http://schema.org/MusicGroup">
-            <h1><span itemprop="name"><%=item.name%></span>'s Albums:</h1>
+            <h2><span itemprop="name"><%=item.name%></span>'s Albums:</h2>
             <ul id="Albums">    
                 <% if (related_items.length > 0) { %>
                     <% related_items.forEach(function(related_item) { %>
                         <li class="SpecificAlbum" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
                             <strong><a itemprop="URL" rel="album" href="/albums/<%=related_item._id%>"><span itemprop="name"><%=related_item.name%></span></a></strong><br />
-                                <% if (related_item.datePublished !== undefined) { %>
-                                    <span itemprop="datePublished"><%=related_item.datePublished%><br /></span>
+                                <% if (related_item.yearPublished !== undefined) { %>
+                                    <span itemprop="yearPublished"><%=related_item.yearPublished%><br /></span>
                                 <% } %>
-                            </span>
                         </li>
                     <% }); %>
                 <% } else { %>
@@ -30,22 +30,8 @@
                 <% } %>
             </ul>
         </div>
-        
-        <div id="update">
-            <h2>Update info for <%=item.name%></h2>
-            <form method="post" id="NewArtistValue" action="/artists/<%=item._id%>">
-            <input type="hidden" name="_method" value="put">
-            <!-- The line above tells the server to treat this as a PUT request. -->
-            <label>Name: 
-                <input name="item[name]" value="<%=item.name%>" type="text" required>
-            </label>
-            <input type="submit" value="Update" name="SubmitButton" />        
-            </form>
-        </div>
 
-        </div>
-
-        <div id="add">
+        <div>
             <h2>Add an album for <%=item.name%></h2>
             <form method="post"  id="NewAlbum" action="/albums/">
                 <input type="hidden" name="item[byArtist]" value="<%=item._id%>">
@@ -54,10 +40,21 @@
                     <input name="item[name]" type="text" required="required" />
                 </label>
                 <label>Year published:
-                    <input name="item[datePublished]" type="text" />
+                    <input name="item[yearPublished]" type="text" />
                 </label>
-                <input type="submit" value="Add" name="SubmitButton" />
+                <input type="submit" value="Add Album" name="SubmitButton" />
             </form>
+        </div>
+    
+        <div>
+            <h2>Update info for <%=item.name%></h2>
+            <form method="post" id="NewArtistValue" action="/artists/<%=item._id%>">
+            <input type="hidden" name="_method" value="put">
+            <label>Name: 
+            <input name="item[name]" value="<%=item.name%>" type="text" required>
+            </label>
+        <input type="submit" value="Update Info" name="SubmitButton" />
+          </form>
         </div>
     
     </body>
